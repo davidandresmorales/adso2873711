@@ -10,10 +10,9 @@ main {
             color: #fff;
             display: flex;
             font-size: 2.2rem;
-            filter: blur(6px) grayscale(1);
+            filter: grayscale(1);
             height: 250px;
             justify-content: center;
-            align-items: center;
             padding: 1rem;
             transition: all 0.2s ease-in;
             transform: scale(0.5);
@@ -23,5 +22,6 @@ main {
                 transform: scale(1);
             }
         }
+
     }
 }
