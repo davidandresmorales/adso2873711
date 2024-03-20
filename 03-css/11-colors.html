@@ -3,10 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porcentage units</title>
+    <title>Colors</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-     
+        div.colors {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        div.colors div.row {
+            display: flex;
+        }
+
+        div.colors div.row div {
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            width: 80px;
+        }
+        div.colors div.row div.maroon { 
+            background-color: maroon; 
+        }
+        div.colors div.row div.red { 
+            background-color: red; 
+        }
+        div.colors div.row div.orange { 
+            background-color: orange; 
+        }
+        div.colors div.row div.yellow { 
+            background-color: yellow; 
+        }
+        div.colors div.row div.olive { 
+            background-color: olive; 
+        }
+        div.colors div.row div.purple { 
+            background-color: purple; 
+        }
+        div.colors div.row div.fuchsia { 
+            background-color: fuchsia; 
+        }
+        div.colors div.row div.white { 
+            background-color: white; 
+        }
+        div.colors div.row div.lime { 
+            background-color: lime; 
+        }
+        div.colors div.row div.green { 
+            background-color: green; 
+        }
+        div.colors div.row div.navy { 
+            background-color: navy; 
+        }
+        div.colors div.row div.blue { 
+            background-color: blue; 
+        }
+        div.colors div.row div.aqua { 
+            background-color: aqua; 
+        }
+        div.colors div.row div.teal { 
+            background-color: teal; 
+        }
+        div.colors div.row div.black { 
+            background-color: black; 
+        }
+        div.colors div.row div.silver { 
+            background-color: silver; 
+        }
+        div.colors div.row div.gray { 
+            background-color: gray; 
+        }
+        div.colors div.row div:first-child,
+        div.colors div.row div:last-child { 
+            color: white; 
+        }
     </style>
 </head>
 <body>
@@ -18,14 +90,37 @@
     <main>
         <header>
             <h1>Colors</h1>
-            <h2>Are specified using predefined color names, or RGB,HEX,HSL</h2>
+            <h2>Are specified using predefined color names, or RGB, HEX, HSL.</h2>
         </header>
         <section class="section">
-          <h3>Color Names:</h3>
-          <div class="Colors">
-            <div class="row1">
-                <div class="maroon">maroon</div>
-                <div class="red">red</div>
+           <h3>Color Names:</h3>
+           <div class="colors">
+                <div class="row row1">
+                    <div class="maroon">maroon</div>
+                    <div class="red">red</div>
+                    <div class="orange">orange</div>
+                    <div class="yellow">yellow</div>
+                    <div class="olive">olive</div>
+                </div>
+                <div class="row row2">
+                    <div class="purple">purple</div>
+                    <div class="fuchsia">fuchsia</div>
+                    <div class="white">white</div>
+                    <div class="lime">lime</div>
+                    <div class="green">green</div>
+                </div>
+                <div class="row row3">
+                    <div class="navy">navy</div>
+                    <div class="blue">blue</div>
+                    <div class="aqua">aqua</div>
+                    <div class="teal">teal</div>
+                </div>
+                <div class="row row4">
+                    <div class="black">black</div>
+                    <div class="silver">silver</div>
+                    <div class="gray">gray</div>
+                </div>
+           </div>
         </section>
     </main>
 </body>
