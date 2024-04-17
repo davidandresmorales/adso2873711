@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lists</title>
+    
+    <style>
+        body {
+            background-color: #17a053;
+        }
+       div.sprite {
+        
+        background: url(images/spriteweb.png) no-repeat;
+        background-position: -10px -400px;
+        margin: 0 auto;
+        height: 180px;
+        width: 190px;
+       }
+       div.box {
+        border: 2px solid #0009;
+        height: 180px;
+        padding: 4px;
+    }
+    section div.box p {
+        font-size: 0.6rem;
+        text-align: justify;
+    }
+    section div.box h4 {
+        background-color: #0009;
+        color: #0009;
+        font-size: 0.7rem;
+        text-align: center;
+        padding: 4px;
+        margin: 0;
+    }
+    div.box2 {
+        overflow: hidden;
+    }
+    div.box3 {
+        overflow: scroll;
+    }
+    div.element {
+        border: 2px solid #0009;
+        width: 200px;
+        font-size: 4.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        height: 80px;
+    }
+    div.parent-element {
+        display: flex;
+        margin: 20px auto;
+        gap: 10px;
+        padding-bottom: 4rem;
+    }
+       
+    </style>
+</head>
+<body>
+    <div class="parent-box">
+        <div class="box box1">
+            <h4>visible</h4>
+        </div>
+        <div class="box box2">
+            <h4>hidden</h4>
+        </div>
+        <div class="box box3">
+            <h4>scroll</h4>
+        </div>
+    </div>
+    
+</body>
+</html>
