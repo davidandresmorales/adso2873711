@@ -6,9 +6,21 @@
     <title>Lists</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-      ul {
-        list-style-type: square;
-      }
+        ul {
+            list-style-type: square;
+        }
+        ul ul {
+            list-style-type: circle;
+        }
+        ol {
+            list-style-type: upper-roman;
+        }
+        ol ol {
+            list-style-type: lower-greek;
+        }
+        ul.images {
+            list-style-image: url(images/basketball.png);
+        }
     </style>
 </head>
 <body>
@@ -19,8 +31,8 @@
     </nav>
     <main>
         <header>
-            <h1>Typography</h1>
-            <h2>Allows you to configure all list properties</h2>
+            <h1>Lists</h1>
+            <h2>Allows you to set all the list style properties at once</h2>
         </header>
         <section>
             <h3>Unordered List</h3>
@@ -31,24 +43,37 @@
                     JavaScript
                     <ul>
                         <li>React JS</li>
-                        <li>Vue Js</li>
+                        <li>Vue JS</li>
                         <li>Angular JS</li>
                     </ul>
                 </li>
             </ul>
             <h3>Ordered List</h3>
             <ol>
-                <li>Goku</li>
-                <ol>
-                    <li>Gohan</li>
-                    <li>Goten</li>
-                </ol>
-                <h3>Imagene List</h3>
-                <ul>
-                    <li>Hamanichi Sakuragi</li>
-                    <li>Haruko Agak</li>
-                </ul>
+                <li>
+                    Goku
+                    <ol>
+                        <li>Gohan</li>
+                        <li>Goten</li>
+                    </ol>
+                </li>
+                <li>
+                    Vegeta
+                    <ol>
+                        <li>Trunks</li>
+                        <li>Brah</li>
+                    </ol>
+                </li>
+                <li>Krillin</li>
+                <li>Yayirobe</li>
             </ol>
+            <h3>Image List</h3>
+            <ul class="images">
+                <li>Hanamichi Sakuragi</li>
+                <li>Haruko Akagi</li>
+                <li>Ryota Miyagi</li>
+                <li>Kaeda Rukawa</li>
+            </ul>
         </section>
     </main>
 </body>
