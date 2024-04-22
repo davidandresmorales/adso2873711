@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lists</title>
+    <title>Sprite</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
         div#sprite {
@@ -12,12 +12,13 @@
             margin: 1rem auto;
             width: 256px;
         }
-        div#sprite.sp1 { background-position: calc(-256px *0) 0;}
-        div#sprite.sp2 { background-position: calc(-256px *1) 0;}
-        div#sprite.sp3{ background-position: calc(-256px *2) 0;}
-        div#sprite.sp4{ background-position: calc(-256px *3) 0;}
-        div#sprite.sp5{ background-position: calc(-256px *4) 0;}
-        div#sprite.sp6{ background-position: calc(-256px *5) 0;}
+        div#sprite.sp1 { background-position: calc(-256px * 0) 0; }
+        div#sprite.sp2 { background-position: calc(-256px * 1) 0; }
+        div#sprite.sp3 { background-position: calc(-256px * 2) 0; }
+        div#sprite.sp4 { background-position: calc(-256px * 3) 0; }
+        div#sprite.sp5 { background-position: calc(-256px * 4) 0; }
+        div#sprite.sp6 { background-position: calc(-256px * 5) 0; }
+
     </style>
 </head>
 <body>
@@ -32,13 +33,13 @@
             <h2>An image sprite is a collection of images put into a single image</h2>
         </header>
         <section>
-          <div id="sprite" class="sp1"></div>
+            <div id="sprite" class="sp1"></div>
         </section>
     </main>
     <script>
-        const sprite = document.getElementById('sprite')
-        let count = 1
-        let numSprite = 6
+        const sprite    = document.getElementById('sprite')
+        const numSprite = 6
+        let count       = 1
         setInterval(() => {
             sprite.className = ''
             sprite.classList.add('sp' + count)
@@ -47,7 +48,7 @@
             } else {
                 count++
             }
-        },100) 
+        }, 80)
     </script>
 </body>
-</html>
+</html>              

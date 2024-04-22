@@ -29,6 +29,7 @@
             position: fixed;
         }
         div.sticky {
+            position: -webkit-sticky;
             position: sticky;
         }
         div.child.relative {
@@ -36,9 +37,8 @@
             left: 150px;
         }
         div.child.absolute {
-            position: absolute;
-            top: 40px;
-            left: 20px;
+            top: 50px;
+            left: 10px
         }
         div.child.fixed {
             top: 640px;
@@ -47,6 +47,10 @@
         }
         div.child.sticky {
             top: 20px;
+        }
+        div.parent p {
+            font-size: 0.8rem;
+            text-align: justify;
         }
     </style>
 </head>
@@ -68,25 +72,25 @@
             </ul>
         </header>
         <section>
-          <h3>Relative</h3>
-          <div class="parent relative">
-            <div class="child relative">Box</div>
-          </div>
-          <h3>Absolute</h3>
-          <div class="parent relative">
-            <div class="child Absolute">Box</div>
-          </div>
-          <h3>Fixed</h3>
-          <div class="parent">
-            <div class="child fixed">Box</div>
-          </div>
-          <h3>Sticky</h3>
-          <div class="parent">
-            <div class="child sticky">Box</div>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore illo accusantium atque exercitationem cum. Recusandae consequuntur voluptatem eligendi pariatur aspernatur officia nam corporis modi, amet debitis fugit temporibus nisi excepturi repudiandae expedita quia nemo ipsam? Pariatur incidunt quia, libero voluptatibus voluptatem culpa, corporis commodi consequatur sunt, ea inventore soluta dolore?
-            </p>
-          </div>
+            <h3>Relative:</h3>
+            <div class="parent">
+                <div class="child relative">BOX</div>
+            </div>
+            <h3>Absolute:</h3>
+            <div class="parent relative">
+                <div class="child absolute">BOX</div>
+            </div>
+            <h3>Fixed:</h3>
+            <div class="parent">
+                <div class="child fixed">BOX</div>
+            </div>
+            <h3>Sticky:</h3>
+            <div class="parent">
+                <div class="child sticky">BOX</div>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat sed, laboriosam quos quia cumque voluptatem omnis ex facilis consequatur, nihil officia laudantium. Placeat debitis ad quibusdam eligendi nostrum vero facere eos obcaecati voluptas tempore. Ex, dolorum? Labore cumque quisquam iusto a, quae dolorem! Enim sunt reprehenderit vero earum numquam aliquam sequi facilis iusto perferendis unde qui labore molestiae, non porro magni. Corporis sunt voluptatem aperiam quam architecto nostrum temporibus, animi distinctio ex modi sequi tempora laborum quod quis, maiores quasi provident harum cupiditate in voluptatum neque? Saepe ducimus omnis aliquam voluptate, laboriosam laudantium necessitatibus accusantium culpa atque delectus deserunt eum fuga amet eligendi nisi vitae quasi iusto maiores ut. Quia velit hic quae vero impedit iste omnis ad obcaecati laudantium! Eveniet, excepturi magni repellat earum beatae dolore necessitatibus! Eius esse qui doloremque. Iure nostrum error alias magni vel itaque earum inventore aspernatur maiores incidunt sunt quisquam velit rem, fugit omnis reiciendis molestiae ab explicabo excepturi suscipit et eius? Iste porro quod error non pariatur magnam ut voluptatem nostrum, quis quas tenetur quo dicta sapiente qui optio voluptatum. Quidem cumque praesentium voluptatum quasi iure ipsum blanditiis vel? Natus ipsa, velit amet inventore vel quo rerum repudiandae, hic corrupti consectetur facilis vitae.
+                </p>
+            </div>
         </section>
     </main>
 </body>
