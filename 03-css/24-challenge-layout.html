@@ -3,197 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Challenge</title>
     <style>
-             body{
-            background-color: green;
-            border: 4px solid white;
-            margin: 0;
-            padding: 0;
-        }
-        main{
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
+        body{
+            font-family: poppins;
+            background-color: #17a053;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        div.sprite{
-            background: url(Images/spriteweb.png) no-repeat;
-            background-position: -10px -400px;
-            border: 2px solid black;
-            margin: 0 auto;
-            height: 180px;
-            width: 190px;
-        }
-        header{
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        a.menu{
-            background-color: rgba(187, 223, 187, 0.24);
-            border-bottom: 3px solid white;
-            text-align: center;
-            padding: 15px;
-            cursor: pointer;
-        }
-        a.menu:is(:hover){
-            background-color: gray;
-            border-bottom: 3px solid yellow;
-        }
-        section div#nn  {
-            display: flex;
-            background-color: greenyellow;
-            height: 230px;
-            width: 840px;
-            margin: 0 auto;
-            border: 2px solid black;
-
-        }
-        div.img1{
-            border: 2px solid white;
-            background: url(Images/spriteweb.png) no-repeat;
-            background-position: -512px -15px; 
-            height: 190px;
-            width: 250px;
-            justify-content:center;  
-            margin: 18px auto;
-            border: 2px solid black;
-        }
-       a.sp01{
-           font-size: 2rem;
-            width: 248px;
-            height: 50px;
-            background-color: #ebe0e02d;
-            text-align: center;
-            cursor: pointer;
-         justify-content: center;
-            border: 2px solid black;
-            display: flex;
-        }
-        a.sp01:is(:hover){
-           background-color: rgba(240, 248, 255, 0.384);
-        }
-        section#section2 div#dd1{
-            background-color: greenyellow;
-            display: flex;
             justify-content: center;
             align-items: center;
-            border: 6px solid greenyellow;
-            height: auto;
-            width: auto;
+            header{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                div.sp1{
+                    background: url(images/spriteweb.png) no-repeat;
+                    width: 180px;
+                    height: 170px;
+                    background-position: -10px -400px;
+                }
+            }
+            div.buttons{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
+                a:is(:link, :visited){
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #0009;
+                    border-bottom: solid 4px #fff;
+                    height: 50px;
+                    width: 135px;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 1rem;
+                }
+                a:is(:hover){
+                    background-color: #000;
+                    border-color: yellow;
+                    transition: 0.3s ease-in all;
+                }
+            }
+            div.imagenes{
+                display: flex;
+                flex-direction: row;
+                gap: 1.5rem;
+                margin: 2rem;
+                justify-content: center;
+                background-color: #0009;
+                padding: 1.5rem;
+                width: calc(230px*3);
+                .sprite{
+                    background: url(./images/spriteweb.png) no-repeat;
+                    background-position: -530px -13px;
+                    width: 230px;
+                    height: 195px;
+                    border: 2px solid #fff;
+                    div{
+                        color: #000;
+                        background-color: #fff6;
+                        display: flex;
+                        justify-content: center;
+                        padding: 1.2rem;
+                    }
+                    div:is(:hover){
+                        background-color: #fff9;
+                    }
+                }
+                
+            }
+            div.parrafos{
+                background-color: #0009;
+                display: flex;
+                flex-direction: column;
+                width: 720px;
+                padding: 0.5rem;
+                gap: 0.5rem;
+                div.contenedor{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 2rem;
+                    background-color: #fff;
+                    height: 200px;
+                    align-items: center;
+                    div.sp2{
+                        display: flex;
+                        flex-direction: row;
+                        width: 100px;
+                        height: 100px;
+                        background: url(images/spriteweb.png);
+                        background-position: -280px -1090px;
+                    }
+                    p{
+                        width: 60%;
+                        font-size: 0.9rem;
+                        display: flex;
+                        text-align: justify;
+                    }
+                    div.sp3{
+                        background: url(images/spriteweb.png) no-repeat;
+                        background-position: -90px -200px;
+                        display: flex;
+                        width: 110px;
+                        height: 170px;
+                    }
+                    p:is(:hover){
+                        color: #17a053;
+                        cursor: pointer;
+                    }
+                }
+            }
+            footer{
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                width: 700px;
+                height: auto;
+                margin: 2rem;
+                align-items: center;
+                padding: 1rem;
+                div.sp4{
+                    display: flex;
+                    width: 300px;
+                    height: 180px;
+                    background: url(images/spriteweb.png) no-repeat;
+                    background-position: -500px -430px;
+                }
+                div.botones-finales{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    align-items: center;
+                a:is(:link, :visited){
+                    text-decoration: none;
+                    color: #000;
+                    background-color: transparent;
+                    border-bottom: solid 4px #fff;
+                    height: 50px;
+                    width: 135px;
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 1rem;
+                }
+                a:is(:hover){
+                    border-color: #17a053;
+                    transition: 0.3s ease-in all;
+                }
+                }
+            }
         }
-        section div#dd1 div#img2{
-            background: url(Images/spriteweb.png) no-repeat;
-            background-position: -250px -490px ; 
-            height: 190px;
-            width: 200px; 
-            justify-content: center;
-            margin: 0px auto;
-            padding: 0;
-            display: flex;
-            background-color:white;
-        }
-        div#text{
-            height: 190px;
-            width: 590px;
-            justify-content:center;  
-            background-color: white;
-            text-align: center;
-            margin: 0px auto;
-            display: flex;
-            cursor: pointer;
-        } 
-        div#img3{
-            background: url(Images/spriteweb.png) no-repeat;
-            background-position: -30px -200px; 
-            height: 190px;
-            width: 200px; 
-            justify-content: center;
-            margin: 0px auto;
-            display: flex;
-            
-        }
-     
-        section#section3{
-            background-color: white;
-            justify-content:center;
-            height: 500px;
-            width: 845px;
-            margin: 0px auto;
-        }
-        div.sprite_{
-            border: 2px solid white;
-            background: url(Images/spriteweb.png) no-repeat;
-            background-position: -480px -438px; 
-            margin: 10px auto;
-            height: 190px;
-            width: 300px;
-            display: flex; 
-        }
-        a.menu1{
-            background-color: rgba(187, 223, 187, 0.24);
-            border-bottom: 3px solid white;
-            padding: 15px;
-            cursor: pointer;
-            display:inline;
-        }
-        a.menu1:is(:hover){
-            background-color: gray;
-            border-bottom: 3px solid yellow;
-        }
-
     </style>
 </head>
 <body>
-  <main>
-    <div class="sprite"></div>
-    <br>
     <header>
-        <a class="menu">Inicio</a>
-        <a class="menu">aaaaaaas</a>
-        <a class="menu">s</a>
-        <a class="menu">s</a>
-        <a class="menu">s</a>
+        <div class="sp1"></div>
     </header>
-    <br>
-    <section>
-        <div id="nn">
-            <div class="img1">
-                <a class="sp01">sss</a>
-            </div>
-            <div class="img1">
-                <a class="sp01">sss02</a>
-            </div>
-            <div class="img1">
-                <a class="sp01">sss03</a>
-            </div>
+    <div class="buttons">
+        <a class="boton" href="">INICIO</a>
+        <a class="boton" href="">NOSOTROS</a>
+        <a class="boton" href="">PORTAFOLIO</a>
+        <a class="boton" href="">SERVICIOS</a>
+        <a class="boton" href="">CONTACTO</a>
+    </div>
+    <div class="imagenes">
+        <div class="sprite"><div>Sprite 01</div></div>
+        <div class="sprite"><div>Sprite 02</div></div>
+        <div class="sprite"><div>Sprite 03</div></div>
+    </div>
+    <div class="parrafos">
+        <div class="contenedor">
+            <div class="sp2"></div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident accusamus earum sequi quo quaerat autem consequatur repudiandae nisi blanditiis voluptates nostrum consectetur ullam repellat vel deserunt, velit eveniet magni corrupti in id aspernatur illo itaque mollitia. Dolorem obcaecati architecto odio nihil voluptatibus vero id, deserunt incidunt optio, velit et amet.</p>
+            <div class="sp3"></div>
         </div>
-    </section>
-    <br>
-    <section id="section2">
-        <div id="dd1">
-            <div id="img2"></div>
-            <div id="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt earum, blanditiis quae alias expedita at necessitatibus illo mollitia in quaerat nostrum corporis ea temporibus facilis perspiciatis molestias dolor. Laudantium id voluptatum magnam quo incidunt quidem saepe provident vel totam, aut, facere, unde enim architecto labore? Officiis maxime quibusdam consequatur magni illum esse unde harum </div>
-            <div id="img3"></div>
+        <div class="contenedor">
+            <div class="sp2"></div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident accusamus earum sequi quo quaerat autem consequatur repudiandae nisi blanditiis voluptates nostrum consectetur ullam repellat vel deserunt, velit eveniet magni corrupti in id aspernatur illo itaque mollitia. Dolorem obcaecati architecto odio nihil voluptatibus vero id, deserunt incidunt optio, velit et amet.</p>
+            <div class="sp3"></div>
         </div>
-        <div id="dd1">
-            <div id="img2"></div>
-            <div id="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt earum, blanditiis quae alias expedita at necessitatibus illo mollitia in quaerat nostrum corporis ea temporibus facilis perspiciatis molestias dolor. Laudantium id voluptatum magnam quo incidunt quidem saepe provident vel totam, aut, facere, unde enim architecto labore? Officiis maxime quibusdam consequatur magni illum esse unde harum </div>
-            <div id="img3"></div>
+        <div class="contenedor">
+            <div class="sp2"></div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident accusamus earum sequi quo quaerat autem consequatur repudiandae nisi blanditiis voluptates nostrum consectetur ullam repellat vel deserunt, velit eveniet magni corrupti in id aspernatur illo itaque mollitia. Dolorem obcaecati architecto odio nihil voluptatibus vero id, deserunt incidunt optio, velit et amet.</p>
+            <div class="sp3"></div>
         </div>
-        <div id="dd1">
-            <div id="img2"></div>
-            <div id="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt earum, blanditiis quae alias expedita at necessitatibus illo mollitia in quaerat nostrum corporis ea temporibus facilis perspiciatis molestias dolor. Laudantium id voluptatum magnam quo incidunt quidem saepe provident vel totam, aut, facere, unde enim architecto labore? Officiis maxime quibusdam consequatur magni illum esse unde harum </div>
-            <div id="img3"></div>
+    </div>
+    <footer>
+        <div class="sp4"></div>
+        <div class="botones-finales">
+            <a href="">INICIO</a>
+            <a href="">NOSOTROS</a>
+            <a href="">PORTAFOLIO</a>
+            <a href="">SERVICIOS</a>
+            <a href="">CONTACTO</a>
         </div>
-    </section>
-    <br>
-    <section id="section3">
-        <div id="sprite_"></div>
-    </section>
-  </main>  
+    </footer>
 </body>
 </html>
