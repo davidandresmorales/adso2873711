@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attribute Style</title>
+    <title>Document Style</title>
     <link rel="stylesheet" href="css/master.css">
+    <style>
+        p.title {
+            background-color: crimson;
+            border-radius: 1rem 0 1rem 0;
+            color: white;
+            font-size: 3rem;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <nav class="controls">
@@ -14,19 +24,13 @@
     </nav>
     <main>
         <header>
-            <h1>Attribute Style</h1>
+            <h1>Document Style</h1>
             <h2>
-                This way we can include CSS within the style attribute in the html tag, it is the least recommended way
+                This way we can include CSS within the style tag, it is very useful when you only have an html document
             </h2>
         </header>
         <section>
-            <p style="background-color: goldenrod;
-                      border-radius: 1rem 0 1rem 0;
-                      color: white;
-                      font-size: 3rem;
-                      padding: 10px;
-                      text-align: center;">
-                ADSO 2873711</p>
+            <p class="title">ADSO 2873711</p>
         </section>
     </main>
 </body>
