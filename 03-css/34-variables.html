@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Fonts</title>
+    <title>Variables</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
-
-        article h2 {
-            font-family: "Permanent Marker", cursive;
-            font-size: 2.4rem;
+        :root {
+           --bg-box: #0009;
+           --color-txt: #fffa;
+           --fz-h4: 2rem;  
+        }
+        article {
+            background-color: var(--bg-box);
+            color: var(--color-txt);
+            padding: 1rem;
+        }
+        article h4 {
+            background-color: var(--bg-box);
+            font-size: var(--fz-h4);
+            text-align: center;
             margin: 0;
         }
-        article p {
-            font-family: "Shadows Into Light", cursive;
+        section article p {
+            font-size: 1rem;
             text-align: justify;
         }
     </style>
@@ -28,14 +36,14 @@
     </nav>
     <main>
         <header>
-            <h1>Web Fonts</h1>
-            <h2>Use fonts that are not installed on the user's computer</h2>
+            <h1>Variables</h1>
+            <h2>The var() function is used to insert the value of a CSS variable</h2>
         </header>
         <section>
             <article>
-                <h2>Lorem Ipsum Dolor</h2>
+                <h4>Lorem Ipsum Dolor</h4>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio officiis in aliquam maiores possimus deserunt. A atque dolorem voluptas adipisci eius nulla explicabo consectetur voluptate asperiores saepe. Ut necessitatibus porro perferendis aspernatur, iste qui odio modi, cumque ipsam temporibus distinctio officia nulla praesentium, obcaecati est itaque quas corporis voluptatibus? Molestias!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ut ad quas! Quidem incidunt aliquam porro minus molestiae, eius itaque corrupti labore, nostrum laboriosam assumenda saepe! Adipisci, similique rem ratione, id soluta magni incidunt iusto molestiae unde, earum nisi velit.
                 </p>
             </article>
         </section>
