@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'roboto-thin';
+	src: url(../fonts/roboto-thin.ttf);
+}
+
+body {
+	background-color: rgba(13, 10, 228, 0.87);
+	font-family: 'roboto-thin';
+}
+
+main {
+	margin: 20px auto;
+	width: 320px;
+}
+
+main header {
+	background-color: #fff;
+	height: 160px;
+}
+
+main header input {
+	border: none;
+	display: block;
+	font-family: 'roboto-thin';
+	margin: 0px auto;
+	outline: none;
+	text-align: right;
+	width: 300px;
+}
+
+main header input#display {
+	color: #737373;
+	font-size: 4em;
+	padding-top: 20px;
+}
+main header input#result {
+	color: #a3a3a3;
+	font-size: 2em;
+}
+
+section button {
+	background-color: #424242;
+	border: none;
+	color: #fbfcfc;
+	height: 80px;
+	font-size: 1.4em;
+	margin-left: -4px;
+	width: 80px;
+	transition: all 0.5s;
+}
+
+section button:hover,
+section button.oper:hover  {
+	background-color: #42E8B2;
+	color: #424242;
+	cursor: pointer;
+}
+
+section button.oper {
+	background-color: #636363;
+}
+section button:nth-child(4n+1) {
+	margin-left: 0px;
+}
