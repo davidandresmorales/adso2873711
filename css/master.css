@@ -89,8 +89,11 @@ main{
         a:is( :hover) i {
             color: rgb(163, 163, 163);
             transform: scale(1.4); 
-
         }
 
+        a.disabled {
+            opacity: 0.4;
+            cursor: ;
+        }
     }
 }
