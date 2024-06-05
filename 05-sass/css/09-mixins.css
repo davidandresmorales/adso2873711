@@ -8,7 +8,7 @@ body main figure {
   width: 320px;
 }
 body main figure.day {
-  background: url(../imgs/day.png) no-repeat center;
+  background: url(../images/day.png) no-repeat center;
   background-size: cover;
 }
 body main figure.day:nth-of-type(1) {
@@ -30,7 +30,7 @@ body main figure.day:nth-of-type(3) {
   box-shadow: 4px 0px 8px #999;
 }
 body main figure div {
-  background: url(../imgs/night.png) no-repeat center;
+  background: url(../images/night.png) no-repeat center;
   background-size: cover;
   height: 100%;
   transition: all 0.5s ease;
