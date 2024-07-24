@@ -3,35 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buttons</title>
+    <title>button-groups</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/master.css">
 </head>
 <body>
     <nav class="controls">
         <a href="../index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fafafa" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
         </a>
     </nav>
     <main>
         <header>
-            <h1>Buttons</h1>
-            <h2>Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</h2>
+            <h1>BUTTON GROUPS</h1>
+            <h2>Agrupar una serie de botones en una sola línea o apílarlos en una columna vertical.</h2>
         </header>
-        <section class="content">
-            <h3 class="my-4">Variants:</h3>
-            <button type="button" class="btn btn-primary">Primary</button>
-            <button type="button" class="btn btn-secondary">Secondary</button>
-            <button type="button" class="btn btn-success">Success</button>
-            <h3 class="my-4">Outline buttons:</h3>
-            <button type="button" class="btn btn-outline-danger">Danger</button>
-            <button type="button" class="btn btn-outline-warning">Warning</button>
-            <button type="button" class="btn btn-outline-info">Info</button>
-            <button type="button" class="btn btn-outline-light">Light</button>
-            <button type="button" class="btn btn-outline-dark">Dark</button>
-            <h3 class="my-4">Sizes:</h3>
-            <button type="button" class="btn btn-primary btn-lg">Large button</button>
-            <button type="button" class="btn btn-primary btn-sm">Small button</button>
+        <section>
+            <h3 class="my-3">Example: </h3>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary">Left</button>
+                <button type="button" class="btn btn-primary">Middle</button>
+                <button type="button" class="btn btn-primary">Right</button>
+            </div>
+
+            <h3 class="my-3">Mixed styles: </h3>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button type="button" class="btn btn-danger">Left</button>
+                <button type="button" class="btn btn-warning">Middle</button>
+                <button type="button" class="btn btn-success">Right</button>
+              </div>
+
+            <h3 class="my-3">Checkbox: </h3>
+              <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck1">Checkbox 1</label>
+              
+                <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck2">Checkbox 2</label>
+              
+                <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btncheck3">Checkbox 3</label>
+              </div>
+
+            <h3 class="my-3">Button toolbar: </h3>
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group me-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-primary">1</button>
+                  <button type="button" class="btn btn-primary">2</button>
+                  <button type="button" class="btn btn-primary">3</button>
+                  <button type="button" class="btn btn-primary">4</button>
+                </div>
+                <div class="btn-group me-2" role="group" aria-label="Second group">
+                  <button type="button" class="btn btn-secondary">5</button>
+                  <button type="button" class="btn btn-secondary">6</button>
+                  <button type="button" class="btn btn-secondary">7</button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Third group">
+                  <button type="button" class="btn btn-info">8</button>
+                </div>
+              </div>
+
+              
+              <h3 class="my-3">Sizing : </h3>
+              <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+                <button type="button" class="btn btn-outline-primary">Left</button>
+                <button type="button" class="btn btn-outline-primary">Middle</button>
+                <button type="button" class="btn btn-outline-primary">Right</button>
+              </div>
+              <br><br>
+              <div class="btn-group" role="group" aria-label="Default button group">
+                <button type="button" class="btn btn-outline-primary">Left</button>
+                <button type="button" class="btn btn-outline-primary">Middle</button>
+                <button type="button" class="btn btn-outline-primary">Right</button>
+              </div>
+              <br><br>
+              <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                <button type="button" class="btn btn-outline-primary">Left</button>
+                <button type="button" class="btn btn-outline-primary">Middle</button>
+                <button type="button" class="btn btn-outline-primary">Right</button>
+              </div>
+            
         </section>
     </main>
     <script src="../js/bootstrap.min.js"></script>
