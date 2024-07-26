@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Andres Morales - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 65%, #11d4b4 35%);
+            padding: 60px 0;
+        }
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        .avatar {
+            border-radius: 50%;
+            max-width: 300px;
+        }
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #0e35c4;
+        }
+        .hero-section h4 {
+            font-size: 1.5rem;
+            color: #11d4b4;
+            font-weight: 500;
+        }
+        .hero-section p {
+            font-size: 1.125rem;
+            color: #555;
+        }
+        .btn-primary {
+            background-color: #11d4b4;
+            border-color: #11d4b4;
+            font-size: 1.125rem;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #1d6313;
+            border-color: #1d6313;
+        }
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #11d4b4;
+            font-weight: 700;
+        }
+        .about-section h3 {
+            font-size: 2rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .about-section p {
+            font-size: 1.125rem;
+            color: #555;
+        }
+        .services-section h2 {
+            font-size: 2.5rem;
+            color: #11d4b4;
+            font-weight: 700;
+        }
+        .services-section .service-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+        .portfolio-section h2 {
+            font-size: 2.5rem;
+            color: #11d4b4;
+            font-weight: 700;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+        }
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer a:hover {
+            color: #11d4b4;
+        }
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        .social-icons a:hover {
+            color: #11d4b4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">David Andres Morales</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h4 class="text-primary">Hello I'm</h4>
+                    <h1 class="display-4 fw-bold">David Andres Morales</h1>
+                    <p class="lead">Professional Freelance Web Designer</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                    <button class="btn btn-primary">Hire me</button>
+                </div>
+                <div class="col-md-6 text-center">
+                    <div class="avatar-wrapper">
+                        <img src="images/Imagen_de_WhatsApp_2024-07-19_a_las_09.16.09_8625b51d-removebg-preview.png" alt="Avatar" class="avatar img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img src="images/Imagen_de_WhatsApp_2024-07-19_a_las_09.15.08_c70f0265-removebg-preview.png" alt="About Image" class="img-fluid rounded-circle" style="width: 400px; height: 400px; object-fit: cover;">
+                </div>
+                <div class="col-md-6">
+                    <h2>About</h2>
+                    <h3>Why You Hire Me?</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+                    <div class="mb-3">
+                        <strong>UI/UX Design</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%;">80%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Web Design</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 70%;">70%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>HTML/CSS</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%;">90%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Sketch</strong>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 65%;">65%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Services I Provide</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Graphic Design</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Web Design</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>UI/UX Design</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Frontend Development</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Business Analysis</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <h3>Digital Marketing</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="portfolio-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Latest Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="images/Captura de pantalla 2024-07-26 012226.png" alt="Project 1" style="width: 400px; height: 300px;">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="images/Captura de pantalla 2024-07-26 030549.png" alt="Project 2" style="width: 400px; height: 300px;">
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <img src="images/Captura de pantalla 2024-07-26 031557.png" alt="Project 3" style="width: 400px; height: 300px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <p>David Andres Morales</p>
+            <div class="social-icons mb-3">
+                <a href="#" class="me-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p>davida_morales@soy.sena.edu.co</p>
+            <nav>
+                <a href="#" class="me-3">Home</a>
+                <a href="#" class="me-3">About</a>
+                <a href="#" class="me-3">Services</a>
+                <a href="#" class="me-3">Portfolio</a>
+            </nav>
+        </div>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
