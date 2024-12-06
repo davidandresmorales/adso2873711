@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15- Challengue Conditionals</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        section div.query {
+             margin: 0 auto;
+             width: 260px;
+             display: flex;
+             align-items: center;
+             flex-direction: column;
+             gap: 0.4rem;
+             input {
+                background-color: #f0db4f;
+                border: 2px solid #fff;
+                outline: none;
+                padding: 0.4rem;
+                border-radius: 8px;
+                transition: background-color 0.4s ease-in;
+                font-family: 'Poppins';
+                width: 200px;
+                &:focus {
+                    background-color: #fff6;
+                }
+             }
+             h5 {
+                margin: 0;
+                font-size: 1rem;
+             }
+             button {
+                border: none;
+                border-radius: 8px;
+                color: #fff;
+                cursor: pointer;
+                background-color: #0009;
+                font-family: 'Poppins';
+                padding: 0.5rem;
+                transition: background-color 0.4s ease-in;
+                width: 216px;
+                &:hover {
+                    background-color: #000c;
+                }
+             }
+        }
+        div.widget {
+            height: 380px;
+            margin: 0.8rem auto;
+            position: relative;
+            width: 360px;
+            &.day {
+                background: url(images/weather/bg-day.svg) no-repeat center;
+            }
+            &.night {
+                background: url(images/weather/bg-night.svg) no-repeat center;
+            }
+            h4 {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+                &.country {
+                    font-size: 24px;
+                    font-weight: 400;
+                    top: 8px;
+                    color: #fffc;
+                }
+                &.city {
+                    font-size: 32px;
+                    font-weight: 700;
+                    top: 30px;
+                    color: #0007;
+                }
+                &.datetime {
+                    font-size: 14px;
+                    font-weight: 300;
+                    top: 79px;
+                    color: #000c;
+                }
+                &.condition,
+                &.humidity,
+                &.cloud {
+                    font-size: 14px;
+                    font-weight: 300;
+                    color: #fffc;
+                }
+                &.condition {
+                    top: 303px;
+                }
+                &.humidity {
+                    top: 339px;
+                    left: 80px;
+                }
+                &.cloud {
+                    top: 339px;
+                    left: 280px;
+                }
+            }
+            figure.icon {
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                position: absolute;
+                left: 50%;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(-50%);
+                top: 120px;
+                width: 240px;
+                height: 160px;
+                figcaption {
+                    font-size: 110px;
+                    color: #0009;
+                }
+            }
+        }
+        /* Night */
+        div.widget.night {
+            h4 {
+                &.country {
+                    color: #000c;
+                }
+                &.city {
+                    color: #fff7;
+                }
+                &.datetime {
+                    color: #fffc;
+                }
+                &.condition,
+                &.humidity,
+                &.cloud {
+                    color: #000c;
+                }
+            }
+            figure.icon {
+                figcaption {
+                    color: #0009;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html"> <!-- ../para devolverme  -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>15- Challengue</h1>
+            <h2>Widget Weater App</h2>
+        </header>
+        <section>
+            <div class="query">
+                <h5>Type City:</h5>
+                <input type="text">
+                <button>Show</button>
+            </div>
+
+            <div class="widget">
+                <h4 class="country"></h4>
+                <h4 class="city"></h4>
+                <h4 class="datetime"></h4>
+            </div>
+
+            <h4 class="country"></h4>
+            <h4 class="temp"></h4>
+            <img src="" alt="Icon" class="icon">
+            <figure class="icon">
+                <figcaption class="temp"></figcaption>
+            </figure>
+        </section>
+
+    </main>
+    <script>
+        // Elements
+        const query = document.querySelector('.query input')
+        const show  = document.querySelector('.query button')
+        let   q     = 'Manizales'
+ 
+        // Events
+        show.addEventListener('click', (e) => {
+            e.preventDefault()
+            if (query.value != '') {
+                q = query.value
+                loadWeather(q)
+                query.value =''
+            }
+        })
+
+        //widget
+
+        const widget = document.querySelector('.widget')
+        const country = document
+
+        const temp = document.querySelector('.temp')
+        const icon = document.querySelector('.icon')
+        const country = document.querySelector('.country')
+
+        const loadWeather = async (q) => {
+            const url = 'https://api.weatherapi.com/v1/current.json?key=f73f2979eb8b49318f6154107241511&q='+q
+            const response = await fetch(url)
+            const data = await response.json()
+            //is day -------
+            let isDay      = data.current.is_day ? true : false
+            if (isDay) {
+                widget.classList.add('day')
+            } else {
+                widget.classList.add('night')
+            }
+            // // Country - City - DateTime
+            country.textContent  = data.location.country
+            city.textContent     = data.location.name
+            datetime.textContent = data.location.localtime
+            // icon - temp
+            icon.style.backgroundImage = 'url('+data.current.condition.icon+')'
+            temp.textContent = data.current.temp_c
+            //condition
+            country.textContent = data.location.country
+            // city.textcontent = data.location.name
+            temp.textContent = data.current.temp_c
+            icon.setAttribute('src', data.current.condition.icon)
+            //console.log(data.current.temp_c)
+        }
+        loadWeather(q)
+        
+        // Card 3D
+        const section = document.querySelector('section')
+        section.addEventListener('mousemove', function(e) {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 10;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 5;
+            widget.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        })
+    </script>
+</body>
+</html>

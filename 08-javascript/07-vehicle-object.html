@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07- Vehicle Object</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        section {
+            position: relative;
+        }
+        section div.header {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            width: 380px;
+        }
+        section div.header button.btn-hidden {
+            visibility: hidden;
+        }
+        section div.header button {
+            border: none;
+            cursor: pointer;
+            height: 44px;
+            width: 44px;
+        }
+        section div.header button.btn-mode {
+            background: transparent url(images/vehicle/btn-mode.svg) no-repeat;
+        }
+        section img.image {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 154px;
+            z-index: 4;
+        }
+        section button {
+            transition: all 0.2s ease-in;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+        section div.attributes {
+            background: url(images/vehicle/attributes.svg) no-repeat;
+            height: 120px;
+            margin: 1rem auto;
+            position: relative;
+            width: 380px;
+        }
+        section div.attributes span {
+            position: absolute;
+        }
+        section div.attributes span.brand {
+            top: 47px;
+            left: 66px;
+        }
+        section div.attributes span.refer {
+            top: 87px;
+            left: 60px;
+        }
+        section div.attributes span.model {
+            top: 47px;
+            left: 256px;
+        }
+        section div.attributes span.color {
+            top: 87px;
+            left: 250px;
+        }
+        section div.landscape {
+            border: 3px solid #714eaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            height: 260px;
+            margin: 0 auto;
+            width: 374px;
+        }
+        section div.landscape div {
+            position: absolute;
+            height: 260px;
+            width: 760px;
+        }
+        section div.landscape div.bg-sky {
+            background: url(images/vehicle/bg-sky.svg) repeat-x 0 bottom;
+            z-index: 1;
+        }
+        section div.landscape div.bg-mountains {
+            background: url(images/vehicle/bg-mountains.svg) repeat-x 0 bottom;
+            z-index: 2;
+        }
+        section div.landscape div.bg-route {
+            background: url(images/vehicle/bg-route.svg) repeat-x 0 bottom;
+            z-index: 3;
+        }
+        @keyframes animParallax {
+            100% {
+                background-position: -1520px bottom;
+            }
+        }
+
+        section div.landscape button {
+            border: none;
+            cursor: pointer;
+            height: 44px;
+            width: 44px;
+            z-index: 5;
+        }
+        section div.landscape button.btn-prev {
+            margin-left: 4px;
+            background: url(images/vehicle/btn-prev.svg) no-repeat;
+        }
+        section div.landscape button.btn-next {
+            margin-right: 4px;
+            background: url(images/vehicle/btn-next.svg) no-repeat;
+        }
+        section div.methods {
+            background: url(images/vehicle/methods.svg) no-repeat;
+            width: 380px;
+            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem auto;
+        }
+        section div.methods button {
+            border: none;
+            cursor: pointer;
+            margin-top: 2.3rem;
+            height: 50px;
+            width: 60px;
+        }
+        section div.methods button.btn-on {
+            background: url(images/vehicle/btn-on.svg) no-repeat;
+        }
+        section div.methods button.btn-fwd {
+            background: url(images/vehicle/btn-fordw.svg) no-repeat;
+        }
+        section div.methods button.btn-stop {
+            background: url(images/vehicle/btn-stop.svg) no-repeat;
+        }
+        section div.methods button.btn-bwd {
+            background: url(images/vehicle/btn-back.svg) no-repeat;
+        }
+        section div.methods button.btn-off {
+            background: url(images/vehicle/btn-off.svg) no-repeat;
+        }
+        /* Dark Mode */
+        section.dark {
+            div.header button.btn-mode {
+                background: transparent url(images/vehicle/btn-mode-dark.svg) no-repeat;
+            }
+            div.attributes {
+                background: url(images/vehicle/attributes-dark.svg) no-repeat;
+                span {
+                    color: #e6d6ff;
+                }
+            }
+            div.landscape div.bg-sky {
+                background: url(images/vehicle/bg-sky-dark.svg) repeat-x 0 bottom;
+            }
+            div.landscape div.bg-mountains {
+                background: url(images/vehicle/bg-mountains-dark.svg) repeat-x 0 bottom;
+            }
+            div.landscape div.bg-route {
+                background: url(images/vehicle/bg-route-dark.svg) repeat-x 0 bottom;
+            }
+            div.landscape button.btn-prev {
+                background: url(images/vehicle/btn-prev-dark.svg) no-repeat;
+            }
+            div.landscape button.btn-next {
+                background: url(images/vehicle/btn-next-dark.svg) no-repeat;
+            }
+            div.methods {
+                background: url(images/vehicle/methods-dark.svg) no-repeat;
+            }
+            div.methods button.btn-on {
+                background: url(images/vehicle/btn-on-dark.svg) no-repeat;
+            }
+            div.methods button.btn-fwd {
+                background: url(images/vehicle/btn-fordw-dark.svg) no-repeat;
+            }
+            div.methods button.btn-stop {
+                background: url(images/vehicle/btn-stop-dark.svg) no-repeat;
+            }
+            div.methods button.btn-bwd {
+                background: url(images/vehicle/btn-back-dark.svg) no-repeat;
+            }
+            div.methods button.btn-off {
+                background: url(images/vehicle/btn-off-dark.svg) no-repeat;
+            }
+        }
+
+        /* Methods */
+        .start {
+            animation: animStart 0.1s ease-in infinite;
+        }
+        @keyframes animStart {
+            100% {
+                bottom: 156px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>07- Object</h1>
+            <h2>Vehicle</h2>
+        </header>
+        <section>
+            <div class="header">
+                <button class="btn-hidden"></button>
+                <img src="images/vehicle/logo.svg" alt="Logo">
+                <button class="btn-mode"></button>
+            </div>
+            <div class="attributes">
+                <span class="brand"></span>
+                <span class="refer"></span>
+                <span class="model"></span>
+                <span class="color"></span>
+            </div>
+            <img src="" class="image">
+            <div class="landscape">
+                <div class="layer bg-sky"></div>
+                <div class="layer bg-mountains"></div>
+                <div class="layer bg-route"></div>
+                <button class="btn-prev"></button>
+                <button class="btn-next"></button>
+            </div>
+            <div class="methods">
+                <button class="btn-on"></button>
+                <button class="btn-fwd"></button>
+                <button class="btn-stop"></button>
+                <button class="btn-bwd"></button>
+                <button class="btn-off"></button>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Values
+        var   index         = 0
+        var   isOn          = false
+        var   isPaused      = false
+        var   isReversed    = false
+        var   lastTimestamp = 0
+        const speedFactors  = [0.04, 0.08, 0.25]
+        // DarkMode
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+        // Elements
+        const btnMode   = document.querySelector('.btn-mode')
+        const section   = document.querySelector('section')
+        const landscape = document.querySelector('.landscape')
+        const layers    = document.querySelectorAll('.layer')
+        const btnPrev   = document.querySelector('.btn-prev')
+        const btnNext   = document.querySelector('.btn-next')
+        const btnOn     = document.querySelector('.btn-on')
+        const btnStop   = document.querySelector('.btn-stop')
+        const btnOff    = document.querySelector('.btn-off')
+        const btnFwd    = document.querySelector('.btn-fwd')
+        const btnBwd    = document.querySelector('.btn-bwd')
+        // Attributes
+        const brand     = document.querySelector('.brand')
+        const refer     = document.querySelector('.refer')
+        const model     = document.querySelector('.model')
+        const color     = document.querySelector('.color')
+        const image     = document.querySelector('.image')
+        // Btns: Events
+        btnMode.addEventListener('click', function() {
+            vehicle.mode()
+        })
+        btnOn.addEventListener('click', function() {
+            vehicle.start()
+        })
+        btnOff.addEventListener('click', function() {
+            vehicle.off()
+        })
+        btnFwd.addEventListener('click', function() {
+            vehicle.fordward()
+        })
+        btnStop.addEventListener('click', function() {
+            vehicle.stop()
+        })
+        btnBwd.addEventListener('click', function() {
+            vehicle.reverse()
+        })
+        // Onject
+        const vehicle = {
+            attributes: [
+                { brand: 'Mercedes',   refer: 'CLE',   model: 2020, color: 'Orange', image: 'images/vehicle/car01.png'},
+                { brand: 'Volkswagen', refer: 'Jetta', model: 2016, color: 'Blue',   image: 'images/vehicle/car02.png'},
+                { brand: 'Hyundai',    refer: 'Creta', model: 2010, color: 'Red',    image: 'images/vehicle/car03.png'},
+                { brand: 'Mazda',      refer: 'MX-5',  model: 2024, color: 'Green',  image: 'images/vehicle/car04.png'}
+            ],
+            mode: function() {
+                section.classList.toggle('dark')
+            },
+            showAttributes: function(i) {
+                brand.textContent = this.attributes[i].brand
+                refer.textContent = this.attributes[i].refer
+                model.textContent = this.attributes[i].model
+                color.textContent = this.attributes[i].color
+                image.setAttribute('src', this.attributes[i].image)
+            },
+            start: function() {
+                if(!isOn) {
+                    image.classList.add('start')
+                    isOn     = true
+                    isPaused = true
+                }
+            },
+            off: function() {
+                if(isOn && isPaused) {
+                    image.classList.remove('start')
+                    isOn = false
+                }
+            },
+            fordward: function() {
+                if(isOn) {
+                    lastTimestamp = 0
+                    isPaused      = false
+                    isReversed    = false
+                    requestAnimationFrame(animateParallax)
+                }
+            },
+            stop: function() {
+                if(isOn && !isPaused) {
+                    isPaused = true
+                }
+            },
+            reverse: function() {
+                if(isOn) {
+                    lastTimestamp = 0
+                    isReversed    = true
+                    isPaused      = false
+                    requestAnimationFrame(animateParallax)
+                }
+            }
+        }
+
+        vehicle.showAttributes(0)
+        darkModeChange(darkMode)
+        btnPrev.style.opacity = '0.2'
+
+        // Next & Prev Buttons
+        btnNext.addEventListener('click', function() {
+            console.log(vehicle.attributes.length)
+            if (index < (vehicle.attributes.length)-1) {
+                btnPrev.style.opacity = '1'
+                vehicle.showAttributes(++index)
+                if (index == (vehicle.attributes.length)-1) {
+                    this.style.opacity = '0.2'
+                }
+            }
+        })
+        btnPrev.addEventListener('click', function() {
+            if (index > 0) {
+                btnNext.style.opacity = '1'
+                vehicle.showAttributes(--index)
+                if (index == 0) {
+                    this.style.opacity = '0.2'
+                }
+            }
+        })
+        // DarkMode Change
+        function darkModeChange(dmq) {
+            if(dmq.matches) {
+                section.classList.add('dark')
+            } else {
+                section.classList.remove('dark')
+            }
+        }
+        // animate Parallax
+        layers.forEach(layer => {
+            layer.dataset.pos = '0'
+        })
+        function animateParallax(timestamp) {
+            if (!isPaused) {
+                const delta   = timestamp - (lastTimestamp || timestamp)
+                lastTimestamp = timestamp
+
+                layers.forEach((layer, index) => {
+                let currentPos = (parseFloat(layer.dataset.pos) || 0) 
+                                 + speedFactors[index] 
+                                 * (isReversed ? delta : -delta)
+                layer.style.backgroundPositionX = `${currentPos}px`
+                layer.dataset.pos = currentPos
+                })
+            }
+            requestAnimationFrame(animateParallax)
+        }
+        //
+        darkMode.addListener(darkModeChange)
+
+    </script>
+</body>
+</html>

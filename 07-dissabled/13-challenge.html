@@ -25,40 +25,40 @@
 
     <!-- Contenedor principal con fondo y bordes -->
     <div class="relative w-full max-w-[800px] h-full max-h-[90vh] flex flex-col justify-center items-center p-4">
-
+        
         <!-- Vista 1: Pantalla de bienvenida -->
         <div id="vista1" class="flex flex-col justify-center items-center text-center w-full h-full bg-red-800 rounded-3xl p-6 shadow-lg transition-opacity duration-500 ease-in-out opacity-100">
             <div class="image-container mb-6">
-                <img class="w-80 sm:w-96 md:w-[600px] lg:w-[800px] object-cover rounded-lg border-4 border-gray-600" src="images/losVengadores.jpeg" alt="Imagen de Bienvenida de los Avengers">
+                <img class="w-full max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] object-cover rounded-lg border-4 border-gray-600" src="images/losVengadores.jpeg" alt="Imagen de Bienvenida de los Avengers">
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold mb-4 text-white">¡Bienvenido a los Avengers!</h1>
-            <p class="text-base sm:text-lg mb-6 text-gray-300">¡Los Avengers están listos para recibirte en su emocionante mundo! Prepárate para explorar las increíbles aventuras de estos héroes icónicos, desde los primeros encuentros hasta las batallas épicas que han marcado la historia del cine de superhéroes. Descubre cómo cada miembro del equipo aporta sus habilidades únicas para enfrentar amenazas globales y salvar el mundo. ¿Estás listo para unirte a ellos en esta aventura?</p>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-4 text-white">¡Bienvenido a los Avengers!</h1>
+            <p class="text-sm sm:text-base md:text-lg mb-6 text-gray-300">¡Los Avengers están listos para recibirte en su emocionante mundo! Prepárate para explorar las increíbles aventuras de estos héroes icónicos, desde los primeros encuentros hasta las batallas épicas que han marcado la historia del cine de superhéroes. Descubre cómo cada miembro del equipo aporta sus habilidades únicas para enfrentar amenazas globales y salvar el mundo. ¿Estás listo para unirte a ellos en esta aventura?</p>
             <button onclick="mostrarVista('vista2')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300">Comenzar</button>
         </div>
 
         <!-- Vista 2: Películas disponibles -->
         <div id="vista2" class="hidden flex flex-col justify-center items-center text-center w-full h-full bg-blue-800 rounded-3xl p-6 shadow-lg transition-opacity duration-500 ease-in-out opacity-100">
-            <button onclick="mostrarVista('vista1')" class="absolute top-4 left-4 text-3xl font-bold text-red-600 hover:text-red-800 transition-all duration-300">&#8592;</button>
-            <h1 class="text-2xl sm:text-3xl font-extrabold mb-6 text-white">Películas Disponibles</h1>
+            <button onclick="mostrarVista('vista1')" class="absolute top-4 left-4 text-2xl sm:text-3xl font-bold text-red-600 hover:text-red-800 transition-all duration-300">&#8592;</button>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-6 text-white">Películas Disponibles</h1>
             <div class="overflow-y-auto max-h-[450px] w-full mb-6">
                 <!-- Película 1 -->
                 <div class="flex flex-col items-center mb-6 transition-transform transform hover:scale-105">
-                    <img class="w-32 sm:w-40 md:w-48 rounded-full border-4 border-white mb-2" src="images/2012.jpeg" alt="Imagen de Los Vengadores">
+                    <img class="w-24 sm:w-32 md:w-40 lg:w-48 rounded-full border-4 border-white mb-2" src="images/2012.jpeg" alt="Imagen de Los Vengadores">
                     <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg shadow-md transition-all duration-300">Los Vengadores (2012)</button>
                 </div>
                 <!-- Película 2 -->
                 <div class="flex flex-col items-center mb-6 transition-transform transform hover:scale-105">
-                    <img class="w-32 sm:w-40 md:w-48 rounded-full border-4 border-white mb-2" src="images/2015.jpeg" alt="Imagen de Vengadores: La Era de Ultrón">
+                    <img class="w-24 sm:w-32 md:w-40 lg:w-48 rounded-full border-4 border-white mb-2" src="images/2015.jpeg" alt="Imagen de Vengadores: La Era de Ultrón">
                     <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg shadow-md transition-all duration-300">Vengadores: La Era de Ultrón (2015)</button>
                 </div>
                 <!-- Película 3 -->
                 <div class="flex flex-col items-center mb-6 transition-transform transform hover:scale-105">
-                    <img class="w-32 sm:w-40 md:w-48 rounded-full border-4 border-white mb-2" src="images/2018.jpeg" alt="Imagen de Vengadores: Infinity War">
+                    <img class="w-24 sm:w-32 md:w-40 lg:w-48 rounded-full border-4 border-white mb-2" src="images/2018.jpeg" alt="Imagen de Vengadores: Infinity War">
                     <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg shadow-md transition-all duration-300">Vengadores: Infinity War (2018)</button>
                 </div>
                 <!-- Película 4 -->
                 <div class="flex flex-col items-center mb-6 transition-transform transform hover:scale-105">
-                    <img class="w-32 sm:w-40 md:w-48 rounded-full border-4 border-white mb-2" src="images/2019.jpeg" alt="Imagen de Vengadores: Endgame">
+                    <img class="w-24 sm:w-32 md:w-40 lg:w-48 rounded-full border-4 border-white mb-2" src="images/2019.jpeg" alt="Imagen de Vengadores: Endgame">
                     <button class="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg shadow-md transition-all duration-300">Vengadores: Endgame (2019)</button>
                 </div>
             </div>
@@ -67,14 +67,14 @@
 
         <!-- Vista 3: Descripción de la película -->
         <div id="vista3" class="hidden flex flex-col justify-center items-center text-center w-full h-full bg-red-800 rounded-3xl p-6 shadow-lg transition-opacity duration-500 ease-in-out opacity-100">
-            <button onclick="mostrarVista('vista1')" class="absolute top-4 left-4 text-3xl font-bold text-blue-600 hover:text-blue-800 transition-all duration-300">&#8592;</button>
+            <button onclick="mostrarVista('vista1')" class="absolute top-4 left-4 text-2xl sm:text-3xl font-bold text-blue-600 hover:text-blue-800 transition-all duration-300">&#8592;</button>
             <div class="image-container mb-6">
-                <img class="w-80 sm:w-96 md:w-[600px] lg:w-[800px] object-cover rounded-lg border-4 border-gray-600" src="images/prueba.jpeg" alt="Imagen de Descripción de la Película">
+                <img class="w-full max-w-[500px] sm:max-w-[600px] md:max-w-[700px] lg:max-w-[800px] object-cover rounded-lg border-4 border-gray-600" src="images/avengers.jpeg" alt="Imagen de Descripción de la Película">
             </div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold mb-6 text-white">Películas de los Avengers</h1>
-            <p class="text-base sm:text-lg mb-6 text-gray-300">Aquí te presentamos una lista de las películas más icónicas de los Avengers. Cada película ha marcado un antes y un después en la historia de los superhéroes en la gran pantalla. Desde la primera reunión de los héroes en "Los Vengadores" hasta el épico final en "Vengadores: Endgame", estas películas han capturado la imaginación de millones de fanáticos alrededor del mundo. Explora cada una de estas historias emocionantes y revive los momentos más impactantes de la saga.</p>
+            <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold mb-6 text-white">Películas de los Avengers</h1>
+            <p class="text-sm sm:text-base md:text-lg mb-6 text-gray-300">Aquí te presentamos una lista de las películas más icónicas de los Avengers. Cada película ha marcado un antes y un después en la historia de los superhéroes en la gran pantalla. Desde la primera reunión de los héroes en "Los Vengadores" hasta el épico final en "Vengadores: Endgame", estas películas han capturado la imaginación de millones de fanáticos alrededor del mundo. Explora cada una de estas historias emocionantes y revive los momentos más impactantes de la saga.</p>
             <div class="overflow-y-auto max-h-[450px] w-full mb-6">
-                <table class="table-auto text-center text-[16px] w-full border-separate border-spacing-2">
+                <table class="table-auto text-center text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] w-full border-separate border-spacing-2">
                     <thead>
                         <tr>
                             <th class="border-b border-gray-600 p-2 text-gray-300">Película</th>
@@ -101,7 +101,7 @@
                     </tbody>
                 </table>
             </div>
-            <button onclick="mostrarVista('vista1')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300">Volver al Inicio</button>
+            <button onclick="mostrarVista('vista1')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-all duration-300">Volver</button>
         </div>
 
     </div>
