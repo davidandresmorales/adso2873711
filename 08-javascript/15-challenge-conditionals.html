@@ -6,140 +6,213 @@
     <title>15- Challengue Conditionals</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        section div.query {
-             margin: 0 auto;
-             width: 260px;
-             display: flex;
-             align-items: center;
-             flex-direction: column;
-             gap: 0.4rem;
-             input {
-                background-color: #f0db4f;
-                border: 2px solid #fff;
-                outline: none;
-                padding: 0.4rem;
-                border-radius: 8px;
-                transition: background-color 0.4s ease-in;
-                font-family: 'Poppins';
-                width: 200px;
-                &:focus {
-                    background-color: #fff6;
-                }
-             }
-             h5 {
-                margin: 0;
-                font-size: 1rem;
-             }
-             button {
-                border: none;
-                border-radius: 8px;
-                color: #fff;
-                cursor: pointer;
-                background-color: #0009;
-                font-family: 'Poppins';
-                padding: 0.5rem;
-                transition: background-color 0.4s ease-in;
-                width: 216px;
-                &:hover {
-                    background-color: #000c;
-                }
-             }
-        }
-        div.widget {
-            height: 380px;
-            margin: 0.8rem auto;
-            position: relative;
-            width: 360px;
-            &.day {
-                background: url(images/weather/bg-day.svg) no-repeat center;
-            }
-            &.night {
-                background: url(images/weather/bg-night.svg) no-repeat center;
-            }
-            h4 {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                margin: 0;
-                &.country {
-                    font-size: 24px;
-                    font-weight: 400;
-                    top: 8px;
-                    color: #fffc;
-                }
-                &.city {
-                    font-size: 32px;
-                    font-weight: 700;
-                    top: 30px;
-                    color: #0007;
-                }
-                &.datetime {
-                    font-size: 14px;
-                    font-weight: 300;
-                    top: 79px;
-                    color: #000c;
-                }
-                &.condition,
-                &.humidity,
-                &.cloud {
-                    font-size: 14px;
-                    font-weight: 300;
-                    color: #fffc;
-                }
-                &.condition {
-                    top: 303px;
-                }
-                &.humidity {
-                    top: 339px;
-                    left: 80px;
-                }
-                &.cloud {
-                    top: 339px;
-                    left: 280px;
-                }
-            }
-            figure.icon {
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-                position: absolute;
-                left: 50%;
-                margin: 0;
+        section.container-menu {
+            border-radius: 10px;
+            background-color: #fff9;
+            color: #0009;
+            padding: 10px;
+            width: 600px;   /* NOTA: Trabajar todos los challengue NO superior a 400px por section/400px/master.css */  
+            
+            div.query {
+                margin: 0 auto;
+                width: 260px;
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                transform: translateX(-50%);
-                top: 120px;
-                width: 240px;
-                height: 160px;
-                figcaption {
-                    font-size: 110px;
-                    color: #0009;
+                flex-direction: column;
+                gap: 0.4rem;
+                input {
+                    background-color: #f0db4f;
+                    border: 2px solid #fff;
+                    outline: none;
+                    padding: 0.4rem;
+                    border-radius: 8px;
+                    transition: background-color 0.4s ease-in;
+                    font-family: 'Poppins';
+                    width: 200px;
+                    &:focus {
+                        background-color: #fff6;
+                    }
+                }
+                h5 {
+                    margin: 0;
+                    font-size: 1rem;
+                }
+                button {
+                    border: none;
+                    border-radius: 8px;
+                    color: #fff;
+                    cursor: pointer;
+                    background-color: #0009;
+                    font-family: 'Poppins';
+                    padding: 0.5rem;
+                    transition: background-color 0.4s ease-in;
+                    width: 216px;
+                    &:hover {
+                        background-color: #000c;
+                    }
+                }
+            }
+            div.widget {
+                /* border: 1px solid red; */
+                height: 550px;
+                margin: 0.8rem auto;
+                transform-style: preserve-3d;
+                perspective: 1000px;
+                position: relative;
+                width: 550px;
+                &.day {
+                    background: url(images/weather/bg-day.svg) no-repeat center;
+                }
+                &.night {
+                    background: url(images/weather/bg-night.svg) no-repeat center;
+                }
+                h4 {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);    /* Truco de Ofac para centrar */
+                    margin: 0;
+                    &.country {
+                        font-size: 34px;
+                        font-weight: 600;
+                        font-family: cursive;
+                        top: 10px;
+                        color: #ffff;
+                    }
+                    &.city {
+                        font-size: 44px;
+                        font-weight: 700;
+                        font-family: cursive;
+                        top: 42px;
+                        color: #000f;
+                    }
+                    &.datetime {
+                        font-size: 10px;
+                        font-weight: 300;
+                        top: 97px;
+                        color: #000f;
+                    }
+                    &.datetime-two {       /* Solo Fecha */ /* Agregado por Yo */
+                        font-size: 20px;
+                        font-weight: 300;
+                        font-family: sans-serif;
+                        top: 144px;
+                        left: 405px;
+                        color: #000f;
+                    }
+                    &.datetime-three {       /* Solo Hora */ /* Agregado por Yo */
+                        font-size: 75px;
+                        font-weight: 300;
+                        font-family: cursive;
+                        top: 170px;
+                        left: 405px;
+                        color: #ffff;
+                    }
+                    &.condition,
+                    &.humidity,
+                    &.cloud {
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: #000f;
+                    }
+                    &.condition {
+                        top: 439px;
+                        left: 284px;
+                    }
+                    &.humidity {
+                        top: 486px;
+                        left: 130px;
+                    }
+                    &.cloud {
+                        top: 488px;
+                        left: 420px;
+                    }
+                }
+                figure.icon {
+                    /* border: 1px solid red; */
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    position: absolute;
+                    left: 55%;    
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* transform: translateX(-50%); */
+                    top: 280px;
+                    width: 220px;
+                    height: 140px;
+                    animation: animIcon 4s linear infinite; /* Aplica la animación */
+                    figcaption {
+                        font-size: 75px;
+                        font-weight: 300;
+                        font-family: cursive;
+                        color: #ffff;
+                    }
+                }
+                figure.icon-two {
+                    /* border: 1px solid red; */
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    position: absolute;
+                    left: 2.5%;    
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* transform: translateX(-50%); */
+                    top: 125px;
+                    width: 260px;
+                    height: 280px;
+                    animation: animIconTwo 4s linear infinite;   /* Aplica la animación */
+                }
+            }
+            /* Night */
+            div.widget.night {
+                h4 {
+                    &.country {
+                        color: #000f;
+                    }
+                    &.city {
+                        color: #ffff;
+                    }
+                    &.datetime {
+                        color: #ffff;
+                    }
+                    &.datetime-two {        /* Solo fecha */ /* Agregado por Yo */
+                        color: #ffff;
+                    }
+                    &.datetime-three {     /* Solo Hora */ /* Agregado por Yo */
+                        color: #ffff;
+                    }
+                    &.condition,
+                    &.humidity,
+                    &.cloud {
+                        color: #ffff;
+                    }
+                }
+                figure.icon {
+                    figcaption {
+                        color: #ffff;
+                    }
                 }
             }
         }
-        /* Night */
-        div.widget.night {
-            h4 {
-                &.country {
-                    color: #000c;
-                }
-                &.city {
-                    color: #fff7;
-                }
-                &.datetime {
-                    color: #fffc;
-                }
-                &.condition,
-                &.humidity,
-                &.cloud {
-                    color: #000c;
-                }
+        @keyframes animIcon {
+            0% {
+                background-position-x: 240px;
             }
-            figure.icon {
-                figcaption {
-                    color: #0009;
-                }
+            100% {
+                background-position-x: -140px;
+            }
+        }
+        @keyframes animIconTwo {
+            0% {
+                background-position-x: 240px;
+            }
+            100% {
+                background-position-x: -250px;
             }
         }
     </style>
@@ -152,30 +225,30 @@
     </nav>
     <main>
         <header>
-            <h1>15- Challengue</h1>
-            <h2>Widget Weater App</h2>
+            <h1>15- Challengue Conditionals</h1>
+            <h2>Este challengue es del clima API</h2>
         </header>
-        <section>
+        <section class="container-menu">
             <div class="query">
                 <h5>Type City:</h5>
                 <input type="text">
                 <button>Show</button>
             </div>
-
             <div class="widget">
                 <h4 class="country"></h4>
                 <h4 class="city"></h4>
                 <h4 class="datetime"></h4>
-            </div>
-
-            <h4 class="country"></h4>
-            <h4 class="temp"></h4>
-            <img src="" alt="Icon" class="icon">
-            <figure class="icon">
-                <figcaption class="temp"></figcaption>
-            </figure>
+                <h4 class="datetime-two"></h4>
+                <h4 class="datetime-three"></h4>
+                <figure class="icon">
+                    <figcaption class="temp"></figcaption>
+                </figure>
+                <figure class="icon-two"></figure>
+                <h4 class="condition"></h4>
+                <h4 class="humidity"></h4>
+                <h4 class="cloud"></h4>
+            </div>            
         </section>
-
     </main>
     <script>
         // Elements
@@ -189,47 +262,55 @@
             if (query.value != '') {
                 q = query.value
                 loadWeather(q)
-                query.value =''
+                query.value = ''
             }
         })
 
-        //widget
-
-        const widget = document.querySelector('.widget')
-        const country = document
-
-        const temp = document.querySelector('.temp')
-        const icon = document.querySelector('.icon')
-        const country = document.querySelector('.country')
+        // Widget
+        const widget        = document.querySelector('.widget')
+        const country       = document.querySelector(".country")
+        const city          = document.querySelector(".city")
+        const dateTime      = document.querySelector(".datetime")
+        const dateTimeTwo   = document.querySelector(".datetime-two")
+        const dateTimeThree = document.querySelector(".datetime-three")
+        const icon          = document.querySelector(".icon")
+        const iconTwo         = document.querySelector(".icon-two")
+        const temp          = document.querySelector('.temp')
+        const condition     = document.querySelector('.condition')
+        const humidity      = document.querySelector('.humidity')
+        const cloud         = document.querySelector('.cloud')
 
         const loadWeather = async (q) => {
-            const url = 'https://api.weatherapi.com/v1/current.json?key=f73f2979eb8b49318f6154107241511&q='+q
+            const url      = 'https://api.weatherapi.com/v1/current.json?key=1c33861797b947219fa62737242211&q='+q
             const response = await fetch(url)
-            const data = await response.json()
-            //is day -------
+            const data     = await response.json()
+            // isDay --------------
             let isDay      = data.current.is_day ? true : false
+            widget.classList.remove('day', 'night')
             if (isDay) {
                 widget.classList.add('day')
             } else {
                 widget.classList.add('night')
             }
-            // // Country - City - DateTime
-            country.textContent  = data.location.country
-            city.textContent     = data.location.name
-            datetime.textContent = data.location.localtime
-            // icon - temp
+            // Country - City - DateTime
+            country.textContent       = data.location.country
+            city.textContent          = data.location.name
+            dateTime.textContent      = data.location.localtime
+            dateTimeTwo.textContent   = (data.location.localtime).substring(0, 11)  // El .substring(0, 11) es para poner solo la fecha por que de 0 a 11 caracteres va hasta el dia. 
+            dateTimeThree.textContent = (data.location.localtime).substring(11)     // El .substring(11) es a donde comienza pero no adonde termina, significa que despues de 11 va estar la hora. 
+            // Icon -Temp
             icon.style.backgroundImage = 'url('+data.current.condition.icon+')'
-            temp.textContent = data.current.temp_c
-            //condition
-            country.textContent = data.location.country
-            // city.textcontent = data.location.name
-            temp.textContent = data.current.temp_c
-            icon.setAttribute('src', data.current.condition.icon)
+            iconTwo.style.backgroundImage = 'url('+data.current.condition.icon+')'
+            temp.textContent = data.current.temp_c + '°'
+            // Condition - Humidity - Cloud
+            condition.textContent = 'Condition: ' + data.current.condition.text
+            humidity.textContent  = 'Humadity: ' + data.current.humidity
+            cloud.textContent     = 'Cloud: ' + data.current.cloud
             //console.log(data.current.temp_c)
         }
         loadWeather(q)
-        
-        // Card 3D
+
+        // Card 3D: 👇🏼 Para movimiento 3D de la card
         const section = document.querySelector('section')
         section.addEventListener('mousemove', function(e) {
             let xAxis = (window.innerWidth / 2 - e.pageX) / 10;
@@ -239,3 +320,8 @@
     </script>
 </body>
 </html>
+
+<!-- 
+URL de la API consumida :
+https://www.weatherapi.com/my/ 
+-->
