@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Array Challenge</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        .container {
+            position: relative;
+        }
+        .fondo {
+            width: 100%;
+            height: auto;
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .selected {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .controls button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>Sports Array Challenge</h1>
+            <h2>Select and manage sports icons</h2>
+        </header>
+        <section class="container">
+            <img class="fondo" src="images/arrays/fondo.svg" alt="">
+            <div id="sports-icons">
+                <!-- Sports icons will be dynamically added here -->
+            </div>
+            <div class="controls">
+                <button id="first-last">First/Last</button>
+                <button id="add-remove">Add</button>
+                <input type="number" id="position" placeholder="Position">
+                <button id="position-icon">Position Icon</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        const sports = [
+            { name: 'ajedrez', src: 'images/arrays/ajedrez.svg' },
+            { name: 'balon-baloncesto', src: 'images/arrays/balon-baloncesto.svg' },
+            { name: 'bate-beisbol', src: 'images/arrays/bate-beisbol.svg' },
+            { name: 'guantes-boxeo', src: 'images/arrays/guantes-boxeo.svg' },
+            { name: 'palos-hockey', src: 'images/arrays/palos-hockey.svg' },
+            { name: 'raqueta-tenis', src: 'images/arrays/raqueta-tenis.svg' },
+            { name: 'tenis-mesa', src: 'images/arrays/tenis-mesa.svg' },
+            { name: 'voleibol', src: 'images/arrays/voleibol.svg' }
+        ];
+        let selectedSport = null;
+        let addMode = true;
+
+        const sportsIcons = document.getElementById('sports-icons');
+        const firstLastButton = document.getElementById('first-last');
+        const addRemoveButton = document.getElementById('add-remove');
+        const positionInput = document.getElementById('position');
+        const positionIconButton = document.getElementById('position-icon');
+
+        function renderIcons() {
+            sportsIcons.innerHTML = sports.map(sport => `
+                <img class="icon ${sport === selectedSport ? 'selected' : ''}" src="${sport.src}" alt="${sport.name}" onclick="selectSport(${JSON.stringify(sport)})">
+            `).join('');
+        }
+
+        function selectSport(sport) {
+            selectedSport = sport;
+            renderIcons();
+        }
+
+        firstLastButton.addEventListener('click', () => {
+            if (selectedSport) {
+                if (firstLastButton.textContent === 'First') {
+                    sports.unshift(selectedSport);
+                    firstLastButton.textContent = 'Last';
+                } else {
+                    sports.push(selectedSport);
+                    firstLastButton.textContent = 'First';
+                }
+                renderIcons();
+            }
+        });
+
+        addRemoveButton.addEventListener('click', () => {
+            if (addMode) {
+                if (selectedSport) {
+                    sports.push(selectedSport);
+                    renderIcons();
+                }
+            } else {
+                if (firstLastButton.textContent === 'First') {
+                    sports.shift();
+                } else {
+                    sports.pop();
+                }
+                renderIcons();
+            }
+            addMode = !addMode;
+            addRemoveButton.textContent = addMode ? 'Add' : 'Remove';
+        });
+
+        positionIconButton.addEventListener('click', () => {
+            const position = parseInt(positionInput.value) - 1;
+            if (selectedSport && position >= 0 && position < sports.length) {
+                sports.splice(position, 0, selectedSport);
+                renderIcons();
+            }
+        });
+
+        renderIcons();
+    </script>
+</body>
+</html>
