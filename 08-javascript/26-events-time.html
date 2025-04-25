@@ -3,36 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Array Challenge</title>
+    <title>26- events tmie</title>
     <link rel="stylesheet" href="css/master.css">
     <style>
-        .container {
-            position: relative;
+        section h4.clock{
+            font-size: 2.8rem;
+            text-align: center;
+            margin: 1rem 0;
         }
-        .fondo {
-            width: 100%;
-            height: auto;
-        }
-        .icon {
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .selected {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        .controls {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-        .controls button {
-            padding: 10px;
-            cursor: pointer;
+        section {
+            input {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 260px;
+            }
+            button {
+                background-color: #b7a63c;
+                border-radius: 5px;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                padding: 0.6rem;
+                width: 110px;
+            }
+            h4.refresh {
+                font-size: 1.6rem;
+                text-align: center;
+            }
+            figure.sky {
+                background: url(images/noche2.jpg) no-repeat center / cover;
+                border-radius: 4px;
+                border: 4px solid #b7a63c;
+                height: 400px;
+                overflow: hidden;
+                position: relative;
+                margin: 0 auto;
+                width: 380px;
+            }
+            img.ovni {
+                position: absolute;
+                top: 145px;
+                left: 145px;
+                transition: left 0.2s ease-in;
+            }
         }
     </style>
 </head>
@@ -44,93 +58,97 @@
     </nav>
     <main>
         <header>
-            <h1>Sports Array Challenge</h1>
-            <h2>Select and manage sports icons</h2>
+            <h1>Template</h1>
+            <h2>Handle time-based events and intervals.</h2>
         </header>
-        <section class="container">
-            <img class="fondo" src="images/arrays/fondo.svg" alt="">
-            <div id="sports-icons">
-                <!-- Sports icons will be dynamically added here -->
-            </div>
-            <div class="controls">
-                <button id="first-last">First/Last</button>
-                <button id="add-remove">Add</button>
-                <input type="number" id="position" placeholder="Position">
-                <button id="position-icon">Position Icon</button>
-            </div>
+        <section>
+            <h3>SetInterval: Digital Clock</h3>
+            <h4 class="clock"></h4>
+            <h3>SetTimeout: Refresh Page</h3>
+            <input class="timeToRefresh" type="number" placeholder="Number of second">
+            <button class="btnSetTime">Set Time</button>
+            <h4 class="refresh"></h4>
+            <h3>Move Element: </h3>
+            <small><Strong>Press Left & Right Keys</Strong></small>
+            <figure class="sky">
+                <img class="ovni" src="images/ovni.png" alt="">
+            </figure>
         </section>
     </main>
     <script>
-        const sports = [
-            { name: 'ajedrez', src: 'images/arrays/ajedrez.svg' },
-            { name: 'balon-baloncesto', src: 'images/arrays/balon-baloncesto.svg' },
-            { name: 'bate-beisbol', src: 'images/arrays/bate-beisbol.svg' },
-            { name: 'guantes-boxeo', src: 'images/arrays/guantes-boxeo.svg' },
-            { name: 'palos-hockey', src: 'images/arrays/palos-hockey.svg' },
-            { name: 'raqueta-tenis', src: 'images/arrays/raqueta-tenis.svg' },
-            { name: 'tenis-mesa', src: 'images/arrays/tenis-mesa.svg' },
-            { name: 'voleibol', src: 'images/arrays/voleibol.svg' }
-        ];
-        let selectedSport = null;
-        let addMode = true;
+        //Elements
+        const clock = document.querySelector('.clock')
+        const timeRefresh = document.querySelector('.timeToRefresh')
+        const btnSetTime = document.querySelector('.btnSetTime')
+        const refresh = document.querySelector('.refresh')
 
-        const sportsIcons = document.getElementById('sports-icons');
-        const firstLastButton = document.getElementById('first-last');
-        const addRemoveButton = document.getElementById('add-remove');
-        const positionInput = document.getElementById('position');
-        const positionIconButton = document.getElementById('position-icon');
+        // SetInterval
+        clock.textContent = "Loading..."
+        setInterval(() => {
+            let currentTime = new Date().toLocaleTimeString()
+            clock.textContent = currentTime
+        }, 1000)
 
-        function renderIcons() {
-            sportsIcons.innerHTML = sports.map(sport => `
-                <img class="icon ${sport === selectedSport ? 'selected' : ''}" src="${sport.src}" alt="${sport.name}" onclick="selectSport(${JSON.stringify(sport)})">
-            `).join('');
-        }
-
-        function selectSport(sport) {
-            selectedSport = sport;
-            renderIcons();
-        }
-
-        firstLastButton.addEventListener('click', () => {
-            if (selectedSport) {
-                if (firstLastButton.textContent === 'First') {
-                    sports.unshift(selectedSport);
-                    firstLastButton.textContent = 'Last';
-                } else {
-                    sports.push(selectedSport);
-                    firstLastButton.textContent = 'First';
-                }
-                renderIcons();
-            }
-        });
-
-        addRemoveButton.addEventListener('click', () => {
-            if (addMode) {
-                if (selectedSport) {
-                    sports.push(selectedSport);
-                    renderIcons();
-                }
+        // SetTimeout
+        btnSetTime.addEventListener('click', () => {
+            if (!timeRefresh.value.length > 0) {
+                alert('Please, Enter number of seconds!')
             } else {
-                if (firstLastButton.textContent === 'First') {
-                    sports.shift();
+                let count = 1
+                let time = parseInt(timeRefresh.value)
+                refresh.textContent = time + ' seconds to refresh!'
+                setInterval(() => {
+                    refresh.textContent = (time -count) + ' seconds to refresh!'
+                    count++
+                }, 1000)
+                setTimeout(() => {
+                    //window.location.replace = '26-events-time.html'
+                    window.location.reload()
+                }, (parseInt(timeRefresh.value) * 1000) )
+            }
+        })
+
+        // Event Keyup
+        const ovni = document.querySelector('.ovni')
+        let leftPosition = 48
+
+        document.addEventListener('keyup', (event) => {
+            if (event.keyCode == 37) { // Left
+                if (leftPosition > -60) {
+                    
+                    leftPosition -= 40
+                    ovni.style.transform = `rotateY(0deg)`
+                    ovni.style.left = `${leftPosition}px`
+
                 } else {
-                    sports.pop();
+                    leftPosition = 340
+                    ovni.style.display = `none`
+                    setTimeout(() => {
+                        ovni.style.display = `block`
+                    }, 200)
+                    ovni.style.left = `${leftPosition}px`
                 }
-                renderIcons();
+                //console.log(leftPosition)
             }
-            addMode = !addMode;
-            addRemoveButton.textContent = addMode ? 'Add' : 'Remove';
-        });
-
-        positionIconButton.addEventListener('click', () => {
-            const position = parseInt(positionInput.value) - 1;
-            if (selectedSport && position >= 0 && position < sports.length) {
-                sports.splice(position, 0, selectedSport);
-                renderIcons();
+            if (event.keyCode == 39) { // Right
+                if (leftPosition < 340) {
+                    
+                    leftPosition += 40
+                    ovni.style.transform = `rotateY(180deg)`
+                    ovni.style.left = `${leftPosition}px`
+                    ovni.src = 'images/ovni.png'
+                } else {
+                    leftPosition = -60
+                    ovni.style.display = `none`
+                    setTimeout(() => {
+                        ovni.style.display = `block`
+                    }, 200)
+                    ovni.style.left = `${leftPosition}px`
+                }
             }
-        });
-
-        renderIcons();
+            // 37 left
+            // 39 Right
+        })
     </script>
 </body>
 </html>

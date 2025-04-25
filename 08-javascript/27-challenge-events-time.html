@@ -1,1 +1,845 @@
-de momento se ve asi, el funcionamiento del programa debe ser asi el usuario selecciona un icono del paso 1 después de seleccionado debe de titilar (aumentar de tamaño ligeramente y volver a su estado normal constante mente) por medio de las opciones del paso dos configurar para agregar el icono del paso 1 debajo del paso 3 (no tienen que estar ya los iconos solo deben estar si se agregan mediante las opciones del paso 2) el funcionamiento de estas opciones son la primera permite destinar un icono de primero o ultimo, la segunda opcion permite agregar  el icono que esta seleccionado en el paso 1 o eliminar el icono dependiendo si la primera opcion  esta en modo primero o ultimo( ) la opcion 3 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera de Autos</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            background-color: #111;
+            color: white;
+        }
+        
+        .inicio-fondo {
+            position: relative;
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .select-car {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 230px;
+        }
+
+        .btn-play {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 430px;
+        }
+        
+        .btn-play img {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+            margin-top: -430px;
+        }
+        
+        .car-option {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .car-selected {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 0, 0.7));
+            transition: all 0.3s ease;
+        }
+        
+        .game-container {
+            display: none;
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        .road {
+            width: 100%;
+            height: 200%;
+            background: url('images/challenge-events/carretera.svg') repeat-y;
+            background-size: 100% auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .player-car {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            bottom: 50px;
+            left: 370px;
+            z-index: 10;
+            transition: left 0.15s ease-out;
+        }
+        
+        .enemy-car {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            z-index: 5;
+        }
+        
+        .score-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            z-index: 20;
+            text-align: right;
+        }
+        
+        .speed-container {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            color: white;
+            font-size: 18px;
+            z-index: 20;
+            text-align: right;
+        }
+        
+        .game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            z-index: 30;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+        
+        .restart-button, .menu-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .restart-button {
+            background-color: #ff5500;
+        }
+        
+        .menu-button {
+            background-color: #0066cc;
+            margin-top: 10px;
+        }
+        
+        .rules-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .rules-container {
+            background-color: #fffde7;
+            padding: 30px;
+            border-radius: 15px;
+            width: 70%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.5);
+            border: 2px solid #0066cc;
+        }
+        
+        .rules-container h2 {
+            margin-top: 0;
+            color: #ffcc00;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .rules-container h3 {
+            color: #00ccff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .rules-container ul {
+            padding-left: 25px;
+        }
+        
+        .rules-container li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .rules-buttons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .rules-button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .start-game-button {
+            background-color: #00aa44;
+            color: white;
+        }
+        
+        .skip-rules-button {
+            background-color: #cc3300;
+            color: white;
+        }
+        
+        .rules-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .play-time {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #cccccc;
+        }
+        
+        .key-icon {
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #666;
+            margin: 0 5px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>Carrera de Autos</h1>
+            <h2>Selecciona tu auto y comienza la carrera.</h2>
+        </header>
+        <section>
+            <div class="inicio-fondo" id="inicioFondo">
+                <img src="images/challenge-events/Inicio-base.svg" alt="Fondo inicial">
+                <div class="select-car" id="selectCar">
+                    <img src="images/challenge-events/select-car.svg" alt="Selecciona tu auto">
+                    <div class="cars-grid">
+                        <img src="images/challenge-events/car-red.svg" alt="Auto rojo" class="car-option" data-car="car-red">
+                        <img src="images/challenge-events/car-yellow.svg" alt="Auto amarillo" class="car-option" data-car="car-yellow">
+                        <img src="images/challenge-events/car-green.svg" alt="Auto verde" class="car-option" data-car="car-green"> 
+                        <img src="images/challenge-events/car-pink.svg" alt="Auto rosa" class="car-option" data-car="car-pink">
+                        <img src="images/challenge-events/car-purple.svg" alt="Auto morado" class="car-option" data-car="car-purple">
+                        <img src="images/challenge-events/car-blue.svg" alt="Auto azul" class="car-option" data-car="car-blue">
+                    </div>
+                </div>
+                <div class="btn-play">
+                    <img src="images/challenge-events/btn-play.svg" alt="Botón play" id="playButton">
+                </div>
+            </div>
+
+            <div class="game-container" id="gameContainer">
+                <div class="road" id="road1"></div>
+                <div class="road" id="road2"></div>
+                <div class="score-container">
+                    Puntos: <span id="score">0</span>
+                </div>
+                <div class="speed-container">
+                    Velocidad: <span id="speed">60</span> km/h
+                </div>
+                <div class="game-over" id="gameOver">
+                    <h2>¡Fin del Juego!</h2>
+                    <p>Tu puntuación: <span id="finalScore">0</span></p>
+                    <div class="play-time">Tiempo jugado: <span id="timePlayed">0</span> segundos</div>
+                    <button class="restart-button" id="restartButton">Jugar de nuevo</button>
+                    <button class="menu-button" id="menuButton">Menú Principal</button>
+                </div>
+            </div>
+            
+            <div class="rules-screen" id="rulesScreen">
+                <div class="rules-container">
+                    <h2>🏁 Reglas del Juego 🏁</h2>
+                    
+                    <h3>🎯 Objetivo</h3>
+                    <p>Conduce tu auto evitando chocar con otros vehículos. Cuanto más tiempo sobrevivas, mayor será tu puntuación.</p>
+                    
+                    <h3>🎮 Controles</h3>
+                    <ul>
+                        <li><strong>Movimiento lateral:</strong> 
+                            <span class="key-icon">←</span> <span class="key-icon">→</span> o 
+                            <span class="key-icon">A</span> <span class="key-icon">D</span></li>
+                        <li><strong>Acelerar:</strong> 
+                            <span class="key-icon">↑</span> o <span class="key-icon">W</span> (mantén presionado)</li>
+                        <li><strong>Frenar:</strong> 
+                            <span class="key-icon">↓</span> o <span class="key-icon">S</span> (mantén presionado)</li>
+                    </ul>
+                    
+                    <h3>🏆 Sistema de Puntos</h3>
+                    <ul>
+                        <li>Obtienes puntos por cada segundo que sobrevivas</li>
+                        <li>Ir más rápido te da puntos adicionales</li>
+                        <li>La dificultad aumenta con el tiempo</li>
+                    </ul>
+                    
+                    <h3>🚗 Mecánicas del Juego</h3>
+                    <ul>
+                        <li>La velocidad base es 60 km/h</li>
+                        <li>Puedes acelerar hasta 180 km/h</li>
+                        <li>Puedes frenar hasta 30 km/h</li>
+                        <li>El tráfico se hace más intenso con el tiempo</li>
+                        <li>Los autos enemigos aparecen en diferentes carriles</li>
+                    </ul>
+                    
+                    <h3>💡 Consejos</h3>
+                    <ul>
+                        <li>Mantén una velocidad moderada para tener mejor control</li>
+                        <li>Anticípate a los movimientos del tráfico</li>
+                        <li>Usa los frenos cuando veas muchos autos juntos</li>
+                        <li>Acelera en rectas despejadas para ganar más puntos</li>
+                    </ul>
+                    
+                    <div class="rules-buttons">
+                        <button class="rules-button start-game-button" id="startGameButton">Comenzar Juego</button>
+                        <button class="rules-button skip-rules-button" id="skipRulesButton">Omitir Reglas</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Añadir los elementos de audio -->
+    <audio id="crashSound" src="sounds/245083515-explosion-debris-cinematic-imp.m4a" preload="auto"></audio>
+    <audio id="backgroundMusic" src="sounds/cave.mp3" preload="auto" loop></audio>
+    <audio id="engineSound" src="sounds/engine-loop.mp3" preload="auto" loop></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables
+            const carOptions = document.querySelectorAll('.car-option');
+            const playButton = document.getElementById('playButton');
+            const inicioFondo = document.getElementById('inicioFondo');
+            const gameContainer = document.getElementById('gameContainer');
+            const road1 = document.getElementById('road1');
+            const road2 = document.getElementById('road2');
+            const scoreDisplay = document.getElementById('score');
+            const speedDisplay = document.getElementById('speed');
+            const finalScoreDisplay = document.getElementById('finalScore');
+            const timePlayedDisplay = document.getElementById('timePlayed');
+            const gameOverScreen = document.getElementById('gameOver');
+            const restartButton = document.getElementById('restartButton');
+            const menuButton = document.getElementById('menuButton');
+            const crashSound = document.getElementById('crashSound');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            const engineSound = document.getElementById('engineSound');
+            const rulesScreen = document.getElementById('rulesScreen');
+            const startGameButton = document.getElementById('startGameButton');
+            const skipRulesButton = document.getElementById('skipRulesButton');
+            
+            let selectedCar = null;
+            let selectedCarSrc = '';
+            let playerCar = null;
+            let gameActive = false;
+            let score = 0;
+            let baseRoadSpeed = 5;
+            let currentRoadSpeed = 5;
+            let enemyCars = [];
+            let keysPressed = {};
+            let roadPosition1 = 0;
+            let roadPosition2 = -600;
+            let movementSpeed = 30;
+            let enemyGenerators = [];
+            let difficultyLevel = 1;
+            let backgroundMusicTimeout = null;
+            let startTime = 0;
+            let currentSpeed = 60;
+            let isAccelerating = false;
+            let isBraking = false;
+            let speedInterval = null;
+            let showRulesNextTime = true; // Controla si se muestran las reglas la próxima vez
+
+            // Definir los límites del área de juego
+            const leftBoundary = 100;
+            const rightBoundary = 620;
+            
+            // Definir los carriles
+            const laneWidth = 60;
+            const gameWidth = 800;
+            const padding = 90;
+            const availableSpace = gameWidth - (2 * padding);
+            const spaceBetweenLanes = availableSpace / 3;
+            
+            const lanes = [
+                padding + (laneWidth / 2),
+                padding + spaceBetweenLanes - (laneWidth / 4),
+                padding + (2 * spaceBetweenLanes) - (laneWidth / 4),
+                600 - (laneWidth / 2)
+            ];
+            
+            const intermediateLanes = [
+                Math.floor((lanes[0] + lanes[1]) / 2),
+                Math.floor((lanes[1] + lanes[2]) / 2),
+                Math.floor((lanes[2] + lanes[3]) / 2)
+            ];
+            
+            const allPossibleLanes = [...lanes, ...intermediateLanes].sort((a, b) => a - b);
+            
+            // Selección de auto
+            carOptions.forEach(car => {
+                car.addEventListener('click', function() {
+                    carOptions.forEach(c => c.classList.remove('car-selected'));
+                    this.classList.add('car-selected');
+                    selectedCar = this.getAttribute('data-car');
+                    selectedCarSrc = this.src;
+                    playButton.style.opacity = '1';
+                });
+            });
+            
+            // Botón de play - ahora muestra las reglas primero
+            playButton.addEventListener('click', function() {
+                if (selectedCar) {
+                    if (showRulesNextTime) {
+                        showRules();
+                    } else {
+                        startGameDirectly();
+                    }
+                }
+            });
+            
+            // Mostrar pantalla de reglas
+            function showRules() {
+                inicioFondo.style.display = 'none';
+                rulesScreen.style.display = 'flex';
+            }
+            
+            // Comenzar juego después de ver reglas
+            startGameButton.addEventListener('click', function() {
+                rulesScreen.style.display = 'none';
+                startGameDirectly();
+            });
+            
+            // Omitir reglas
+            skipRulesButton.addEventListener('click', function() {
+                showRulesNextTime = false; // No mostrar reglas la próxima vez
+                rulesScreen.style.display = 'none';
+                startGameDirectly();
+            });
+            
+            // Iniciar juego directamente (sin mostrar reglas)
+            function startGameDirectly() {
+                gameContainer.style.display = 'block';
+                startGame();
+            }
+            
+            // Manejo de teclas
+            document.addEventListener('keydown', function(event) {
+                keysPressed[event.key] = true;
+                
+                if (event.key === 'ArrowUp' || event.key === 'w') {
+                    isAccelerating = true;
+                    isBraking = false;
+                } else if (event.key === 'ArrowDown' || event.key === 's') {
+                    isBraking = true;
+                    isAccelerating = false;
+                }
+            });
+            
+            document.addEventListener('keyup', function(event) {
+                keysPressed[event.key] = false;
+                
+                if (event.key === 'ArrowUp' || event.key === 'w') {
+                    isAccelerating = false;
+                } else if (event.key === 'ArrowDown' || event.key === 's') {
+                    isBraking = false;
+                }
+            });
+            
+            // Botón de reinicio
+            restartButton.addEventListener('click', function() {
+                gameOverScreen.style.display = 'none';
+                startGame();
+            });
+            
+            // Botón de menú principal
+            menuButton.addEventListener('click', function() {
+                gameOverScreen.style.display = 'none';
+                gameContainer.style.display = 'none';
+                inicioFondo.style.display = 'flex';
+                resetGame();
+                showRulesNextTime = false; // No mostrar reglas al volver al menú
+            });
+            
+            function startGame() {
+                // Reiniciar variables
+                score = 0;
+                scoreDisplay.textContent = score;
+                baseRoadSpeed = 5;
+                currentRoadSpeed = 5;
+                currentSpeed = 60;
+                speedDisplay.textContent = currentSpeed;
+                gameActive = true;
+                difficultyLevel = 1;
+                startTime = Date.now();
+                
+                // Limpiar enemigos previos
+                enemyCars.forEach(car => car.element.remove());
+                enemyCars = [];
+                
+                // Limpiar generadores
+                enemyGenerators.forEach(generator => clearInterval(generator));
+                enemyGenerators = [];
+                
+                // Limpiar intervalo de velocidad
+                if (speedInterval) clearInterval(speedInterval);
+                
+                // Iniciar sistema de velocidad
+                speedInterval = setInterval(updateSpeed, 100);
+                
+                // Limpiar timeout de música
+                if(backgroundMusicTimeout) clearTimeout(backgroundMusicTimeout);
+                
+                // Sonidos
+                engineSound.currentTime = 0;
+                engineSound.play();
+                
+                backgroundMusicTimeout = setTimeout(function() {
+                    if(gameActive) {
+                        backgroundMusic.currentTime = 0;
+                        backgroundMusic.play();
+                    }
+                }, 3000);
+                
+                // Crear auto del jugador
+                if (playerCar) playerCar.remove();
+                
+                playerCar = document.createElement('img');
+                playerCar.src = selectedCarSrc;
+                playerCar.className = 'player-car';
+                playerCar.style.left = lanes[1] + 'px';
+                gameContainer.appendChild(playerCar);
+                
+                // Posición inicial
+                roadPosition1 = 0;
+                roadPosition2 = -600;
+                
+                // Iniciar generadores de enemigos
+                enemyGenerators.push(setInterval(generateEnemyCars, 1500));
+                enemyGenerators.push(setInterval(() => {
+                    if (Math.random() > 0.4) generateEnemyCars(true);
+                }, 1200));
+                enemyGenerators.push(setInterval(increaseDifficulty, 10000));
+                
+                // Iniciar juego
+                requestAnimationFrame(gameLoop);
+            }
+            
+            function updateSpeed() {
+                if (!gameActive) return;
+                
+                if (isAccelerating) {
+                    currentSpeed = Math.min(180, currentSpeed + 2);
+                } else if (isBraking) {
+                    currentSpeed = Math.max(30, currentSpeed - 3);
+                } else {
+                    if (currentSpeed > 65) {
+                        currentSpeed = Math.max(60, currentSpeed - 0.5);
+                    } else if (currentSpeed < 55) {
+                        currentSpeed = Math.min(60, currentSpeed + 0.5);
+                    }
+                }
+                
+                currentRoadSpeed = baseRoadSpeed + ((currentSpeed - 60) / 10);
+                speedDisplay.textContent = Math.floor(currentSpeed);
+            }
+            
+            function gameLoop() {
+                if (!gameActive) return;
+                
+                roadPosition1 += currentRoadSpeed;
+                roadPosition2 += currentRoadSpeed;
+                
+                if (roadPosition1 >= 600) roadPosition1 = -600 + (roadPosition1 - 600);
+                if (roadPosition2 >= 600) roadPosition2 = -600 + (roadPosition2 - 600);
+                
+                road1.style.top = roadPosition1 + 'px';
+                road2.style.top = roadPosition2 + 'px';
+                
+                movePlayerCar();
+                moveEnemyCars();
+                checkCollisions();
+                updateScore();
+                
+                requestAnimationFrame(gameLoop);
+            }
+            
+            function movePlayerCar() {
+                let left = parseInt(window.getComputedStyle(playerCar).left);
+                
+                if (keysPressed['ArrowLeft'] || keysPressed['a']) {
+                    left = Math.max(left - movementSpeed, leftBoundary);
+                }
+                
+                if (keysPressed['ArrowRight'] || keysPressed['d']) {
+                    left = Math.min(left + movementSpeed, rightBoundary);
+                }
+                
+                playerCar.style.left = left + 'px';
+            }
+            
+            function generateEnemyCars(isSecondary = false) {
+                if (!gameActive) return;
+                
+                const carColors = ['red', 'yellow', 'green', 'pink', 'purple', 'blue'];
+                const playerColor = selectedCar.split('-')[1];
+                const availableColors = carColors.filter(color => color !== playerColor);
+                const randomColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+                
+                const enemyCar = document.createElement('img');
+                enemyCar.src = `images/challenge-events/car-${randomColor}.svg`;
+                enemyCar.className = 'enemy-car';
+                
+                let laneOptions = isSecondary ? 
+                    (Math.random() < 0.7 ? intermediateLanes : allPossibleLanes) : 
+                    (Math.random() < 0.6 ? lanes : allPossibleLanes);
+                
+                let validPosition = false;
+                let attempts = 0;
+                let randomLane;
+                
+                while (!validPosition && attempts < 10) {
+                    randomLane = laneOptions[Math.floor(Math.random() * laneOptions.length)];
+                    validPosition = true;
+                    
+                    for (const car of enemyCars) {
+                        const carTop = parseInt(car.element.style.top);
+                        const carLeft = parseInt(car.element.style.left);
+                        
+                        if (carTop < 100 && Math.abs(carLeft - randomLane) < 65) {
+                            validPosition = false;
+                            break;
+                        }
+                    }
+                    
+                    attempts++;
+                }
+                
+                if (!validPosition) {
+                    randomLane = allPossibleLanes[Math.floor(Math.random() * allPossibleLanes.length)];
+                }
+                
+                enemyCar.style.left = randomLane + 'px';
+                const verticalOffset = Math.random() < 0.3 ? -200 - Math.random() * 100 : -150;
+                enemyCar.style.top = verticalOffset + 'px';
+                
+                gameContainer.appendChild(enemyCar);
+                
+                const baseSpeed = currentRoadSpeed * 0.9 + (difficultyLevel * 0.5);
+                const randomSpeedFactor = Math.random() * 2 - 0.5;
+                
+                enemyCars.push({
+                    element: enemyCar,
+                    speed: baseSpeed + randomSpeedFactor
+                });
+                
+                if (Math.random() < 0.2 && difficultyLevel > 2) {
+                    setTimeout(() => {
+                        if (gameActive) generateTrafficGroup(randomLane);
+                    }, 200);
+                }
+            }
+            
+            function generateTrafficGroup(avoidLane) {
+                const groupSize = Math.floor(Math.random() * 2) + 2;
+                
+                for (let i = 0; i < groupSize; i++) {
+                    setTimeout(() => {
+                        if (!gameActive) return;
+                        
+                        const carColors = ['red', 'yellow', 'green', 'pink', 'purple', 'blue'];
+                        const playerColor = selectedCar.split('-')[1];
+                        const availableColors = carColors.filter(color => color !== playerColor);
+                        const randomColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+                        
+                        const enemyCar = document.createElement('img');
+                        enemyCar.src = `images/challenge-events/car-${randomColor}.svg`;
+                        enemyCar.className = 'enemy-car';
+                        
+                        let possibleLanes = allPossibleLanes.filter(lane => Math.abs(lane - avoidLane) > 70);
+                        const randomLane = possibleLanes[Math.floor(Math.random() * possibleLanes.length)];
+                        
+                        enemyCar.style.left = randomLane + 'px';
+                        const verticalOffset = -150 - (i * 130);
+                        enemyCar.style.top = verticalOffset + 'px';
+                        
+                        gameContainer.appendChild(enemyCar);
+                        
+                        const baseSpeed = currentRoadSpeed * 0.9 + (difficultyLevel * 0.3);
+                        enemyCars.push({
+                            element: enemyCar,
+                            speed: baseSpeed + Math.random() * 4
+                        });
+                    }, i * 150);
+                }
+            }
+            
+            function moveEnemyCars() {
+                for (let i = enemyCars.length - 1; i >= 0; i--) {
+                    const car = enemyCars[i];
+                    const top = parseInt(window.getComputedStyle(car.element).top);
+                    car.element.style.top = (top + car.speed) + 'px';
+                    
+                    if (top > 600) {
+                        car.element.remove();
+                        enemyCars.splice(i, 1);
+                    }
+                }
+            }
+            
+            function checkCollisions() {
+                const playerRect = playerCar.getBoundingClientRect();
+                
+                for (const car of enemyCars) {
+                    const enemyRect = car.element.getBoundingClientRect();
+                    
+                    if (!(playerRect.right < enemyRect.left + 10 || 
+                          playerRect.left > enemyRect.right - 10 || 
+                          playerRect.bottom < enemyRect.top + 15 || 
+                          playerRect.top > enemyRect.bottom - 15)) {
+                        gameOver();
+                        return;
+                    }
+                }
+            }
+            
+            function updateScore() {
+                score += 1 + (currentSpeed - 60) / 30;
+                scoreDisplay.textContent = Math.floor(score);
+            }
+            
+            function increaseDifficulty() {
+                if (!gameActive) return;
+                
+                difficultyLevel += 0.5;
+                baseRoadSpeed = Math.min(8, 5 + (difficultyLevel * 0.4));
+                movementSpeed = Math.min(40, 30 + (difficultyLevel * 0.8));
+                
+                if (difficultyLevel >= 3 && Math.random() < 0.3) {
+                    generateEnemyCars(true);
+                }
+                
+                if (difficultyLevel === 4) {
+                    enemyGenerators.push(setInterval(() => {
+                        if (Math.random() > 0.6) generateEnemyCars(true);
+                    }, 2000));
+                }
+            }
+            
+            function gameOver() {
+                gameActive = false;
+                const playTime = Math.floor((Date.now() - startTime) / 1000);
+                timePlayedDisplay.textContent = playTime;
+                
+                backgroundMusic.pause();
+                engineSound.pause();
+                crashSound.play();
+                
+                enemyGenerators.forEach(generator => clearInterval(generator));
+                enemyGenerators = [];
+                
+                if (speedInterval) clearInterval(speedInterval);
+                
+                finalScoreDisplay.textContent = Math.floor(score);
+                gameOverScreen.style.display = 'block';
+                showRulesNextTime = false; // No mostrar reglas después de Game Over
+            }
+            
+            function resetGame() {
+                gameActive = false;
+                score = 0;
+                baseRoadSpeed = 5;
+                currentRoadSpeed = 5;
+                currentSpeed = 60;
+                difficultyLevel = 1;
+                
+                enemyGenerators.forEach(generator => clearInterval(generator));
+                enemyGenerators = [];
+                
+                if (speedInterval) clearInterval(speedInterval);
+                
+                backgroundMusic.pause();
+                engineSound.pause();
+                crashSound.pause();
+                
+                enemyCars.forEach(car => {
+                    if (car.element && car.element.parentNode) car.element.remove();
+                });
+                enemyCars = [];
+                
+                if (playerCar && playerCar.parentNode) playerCar.remove();
+            }
+        });
+    </script>
+</body>
+</html>
