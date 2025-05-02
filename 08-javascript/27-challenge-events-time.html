@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow: hidden;
             background-color: #111;
             color: white;
         }
@@ -557,8 +556,6 @@
                 if(backgroundMusicTimeout) clearTimeout(backgroundMusicTimeout);
                 
                 try {
-                    if (crashSound) crashSound.currentTime = 0;
-                    
                     backgroundMusicTimeout = setTimeout(function() {
                         if(gameActive && backgroundMusic) {
                             backgroundMusic.currentTime = 0;
