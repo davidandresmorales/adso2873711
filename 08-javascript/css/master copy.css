@@ -12,13 +12,14 @@ background-size: cover;
     font-family: poopins, sans-serif;
     color: rgb(255, 237, 39);
 }
+
 nav.controls {
     position: fixed;
     a:is(:link, :visited) {
         border-radius: 50px;
-        display: flex; 
-        align-items: center;  
-        justify-content: center; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #0009;
         height: 40px;
         transform: scale(0.8);
@@ -26,17 +27,21 @@ nav.controls {
         padding: 10px;
         width: 40px;
         transition: all 0.4s ease-in;
+
+        
     }
-    a:is(:hover){
+
+    a:is(:hover) {
         opacity: 1;
         transform: scale(1);
     }
     svg {
         width: 40px;
     }
+    
 }
 
-main{
+main {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -45,41 +50,32 @@ main{
     min-height: 100vh;
 
     header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         h1, h2 {
-            color: rgb(32, 32, 32);
+            color: #0009;
             text-align: center;
             margin: 0;
         }
         h1 {
-            font-size: 4rem;
+            font-size: 3.4rem;
             font-weight: 400;
         }
         h2 {
             font-size: 1.4rem;
             font-weight: 300;
         }
-        img {
-            border-radius: 50%;
-            background-color: black;
-            height: 190px;
-            width: 200px;
-            border: 10px solid black;
-        }
     }
+
     menu {
         display: flex;
         flex-direction: column;
         padding: 0;
-        gap: 1rem;
-
-        a:is(:Link, :visited) {
+        gap: 0.4rem;
+        
+        a:is(:link, :visited) {
             background-color: #0009;
             border-radius: 50px;
             display: flex;
-            color:white;
+            color: #fffd;
             gap: 1rem;
             align-items: center;
             padding: 1rem;
@@ -88,44 +84,69 @@ main{
             width: 280px;
 
             i {
-                background-color: #ECE61C;
-                font-style: normal;
+                background-color: #afa400;
                 border-radius: 20px;
-                color: rgb(27, 27, 27);
+                color: #0009;
+                font-style: normal;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 transition: all 0.5s ease-in;
                 height: 34px;
                 width: 34px;
-
             }
         }
-        
+
         a:is(:hover) {
-            transform: translate(-30px);
-            background-color: #85862e;
+            transform: translate(-10px);
+            background-color: #000c;
         }
 
         a:is(:hover) i {
-            transform: scale(1.4) rotateY(360deg);
+            transform: scale(1.4);
         }
     }
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1, h2 {
+            color: #0009;
+            text-align: center;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3.4rem;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+        img {
+            border-radius: 50%;
+            width: 160px;
+            border: 10px solid #fff9;
+        }
+    }
+
+
     section {
         border-radius: 10px;
         background-color: #fff9;
-        color: #000000da;
+        color: #0009;
         padding: 10px;
-        width: 400px;
+        width: auto;
+        text-align: center;
+        justify-content: center;
         h3 {
             border-bottom: 2px dotted #0004;
-            color: #0009;
+            color: #0006;
             font-size: 1.6rem;
             margin: 0;
             width: fit-content;
-            
         }
-        p{
+        p {
             font-size: 1.4rem;
             margin: 10px 0;
         }
