@@ -3,26 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title>Events</title>
     <link rel="stylesheet" href="css/master.css">
+    <style>
+        div.player{
+            background: linear-gradient(to bottom, #0006, #000c);
+            border-radius: 10px;
+            height: 340px;
+            margin: 2rem auto;
+            position: relative;
+            width: 340px;
+            h4.title{
+                color: yellow;
+                position: absolute;
+                font-size: 32px;
+                font-weight: 700;
+                opacity: 0.9;
+                text-align: center;
+                top: 10px;
+                left: 50%;
+                width: 320px;
+                transform: translateX(-50%);
+            }
+            h4.artist, h4.year{
+                color: #fff;
+                position: absolute;
+                font-size: 20px;
+                font-weight: 500;
+                opacity: 0.7;
+                text-align: center;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 320px;
+            }
+            h4.year{
+                top: 100px;
+            }
+            div.controls{
+                position: absolute;
+                width: 320px;
+                bottom: 40px;
+                height: 92px;
+                left: 50%;
+                display: flex;
+                justify-content: space-between;
+                transform: translateX(-50%);
+
+                button.prev{
+                    background: url(images/mp3Player/prev.svg) no-repeat;
+                    background-size: cover;
+                    border: none;
+                    height: 41.67px;
+                    width: 41.67px;
+                    &:hover{
+                        transform: scale(4px);
+                    }
+                }
+                button.play{
+                    background: url(images/mp3Player/play.svg) no-repeat center;
+                    background-size: cover;
+                    border: none;
+                    height: 91.76px;
+                    width: 91.76px;
+                    &:hover{
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
+                }
+                    button.next{
+                    background: url(images/mp3Player/next.svg) no-repeat;
+                    background-size: cover;
+                    border: none;
+                    height: 41.67px;
+                    width: 41.67px;
+                    &:hover{
+                        transform: scale(4px);
+                    }
+                }
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="controls">
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns "<svg xmlns= "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>"
         </a>
     </nav>
-    <main>
-        <header>
-            <h1>Template</h1>
-            <h2>Description.</h2>
-        </header>
-        <section>
+<main>
+    <header>
+        <h1>18-Events</h1>
+        <h2>Esta etiqueta permite enlazar un recurso especifico</h2>
+    </header>
+    <section>
+        <div class="player">
+            <h4 class="title">Black shirt</h4>
+            <h4 class="artist">Juanes - My Blood</h4>
+            <h4 class="year">2004</h4>
+            <div class="controls">
+                <button class="prev"></button>
+                <button class="play"></button>
+                <button class="next"></button>
+            </div>
+        </div>
+        <audio src=""></audio>
+</section>
 
-        </section>
-    </main>
-    <script>
-        
-    </script>
+</main> 
+<script>
+    //Elments
+    const player = document.querySelector('.player')
+    const title = document.querySelector('.title')
+    const artist = document.querySelector('.artist')
+    const year = document.querySelector('.year')
+    const btnPrev = document.querySelector('.prev')
+    const btnPlay = document.querySelector('.play')
+    const btnNext = document.querySelector('.next')
+    const audio = document.querySelector('audio')
+
+
+
+    //variables
+    let songs = []
+    let currentSong = 0
+    let isPlaying = false
+
+    //Functions
+    function loadSong(index) {
+        const song = songs[index]
+        player.style.background = `url(${song.cover}) no-repeat center`
+        title.textContent = song.title
+        artist.textContent = `${song.artist} - ${song.album}`
+        year.textContent = song.year
+        audio.src = song.song
+        // audio.play()
+        // Console.table(song)
+    }
+
+    // Events
+
+    btnPlay.addEventListener('click', (e) => {
+        if (isPlaying) {
+            audio.pause()
+            btnPlay.style.background = `url(images/mp3Player/play.svg)`
+        } else {
+            audio.play()
+            btnPlay.style.background = `url(images/mp3Player/pause.svg)`
+        }
+        isPlaying = !isPlaying
+    })
+
+    btnNext.addEventListener('click', (e) => {
+        if (currentSong < songs.length-1) {
+            currentSong += 1
+        } else {
+            currentSong = 0
+        }
+        loadSong(currentSong)
+        btnPlay.style.background = 'url(images/mp3layer/pause.svg)'
+        isPlaying = false
+    })
+
+    fetch('json/playlist.json')
+    .then(response => response.json())
+    .then(data => {
+        songs = data.songs
+        loadSong(currentSong)
+    }).catch(error=> console.error('Error: ', error))
+
+
+</script>
 </body>
 </html>
